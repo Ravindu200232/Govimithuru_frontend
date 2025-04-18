@@ -142,7 +142,7 @@ const PaymentReceiptForm = () => {
         if (!validateForm()) return;
 
         try {
-            const response = await axios.post('http://localhost:8000/api/givechecks/create', formData);
+            const response = await axios.post('https://govimithuru-backend.onrender.com/api/givechecks/create', formData);
             toast.success(`Receipt created: ${response.data.data.receiptNumber}`);
             // Reset form or handle success
         } catch (error) {

@@ -17,7 +17,7 @@ function DeliveryDashboard() {
     useEffect(() => {
         const fetchDeliveries = async () => {
             try {
-                const res = await axios.get('http://localhost:8000/delivery/');
+                const res = await axios.get('https://govimithuru-backend.onrender.com/delivery/');
                 // Create fake delivery IDs
                 const deliveriesWithFakeIds = res.data.map((delivery, index) => ({
                     ...delivery,
@@ -34,7 +34,7 @@ function DeliveryDashboard() {
     useEffect(() => {
         const fetchDrivers = async () => {
             try {
-                const res = await axios.get('http://localhost:8000/drivers/status/available');
+                const res = await axios.get('https://govimithuru-backend.onrender.com/drivers/status/available');
                 setDrivers(res.data);
             } catch (err) {
                 toast.error('Error fetching drivers: ' + err.message);
@@ -54,7 +54,7 @@ function DeliveryDashboard() {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:8000/delivery/delete/${id}`);
+            await axios.delete(`https://govimithuru-backend.onrender.com/delivery/delete/${id}`);
             toast.success('Delivery deleted successfully');
             setDeliveries(prevDeliveries => prevDeliveries.filter(delivery => delivery._id !== id));
         } catch (err) {
@@ -64,7 +64,7 @@ function DeliveryDashboard() {
 
     const handleConfirm = async (id) => {
         try {
-            await axios.post(`http://localhost:8000/delivery/confirm/${id}`);
+            await axios.post(`https://govimithuru-backend.onrender.com/delivery/confirm/${id}`);
             toast.success('Delivery confirmed successfully');
             setDeliveries(prevDeliveries =>
                 prevDeliveries.map(delivery =>
@@ -82,7 +82,7 @@ function DeliveryDashboard() {
             const driverName = driver ? `${driver.firstName} ${driver.lastName}` : "";
 
             try {
-                await axios.put(`http://localhost:8000/delivery/update/${deliveryId}`, { driverName });
+                await axios.put(`https://govimithuru-backend.onrender.com/delivery/update/${deliveryId}`, { driverName });
                 toast.success('Driver assigned successfully');
                 setDeliveries(prevDeliveries =>
                     prevDeliveries.map(delivery =>

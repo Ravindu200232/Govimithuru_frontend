@@ -17,7 +17,7 @@ const EmployeeSummary = () => {
     useEffect(() => {
         const fetchEmployees = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/employee/');
+                const response = await axios.get('https://govimithuru-backend.onrender.com/employee/');
                 setEmployees(response.data);
                 setLoading(false);
                 preparePositionChartData(response.data);

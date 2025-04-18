@@ -11,7 +11,7 @@ function Fertilizers() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8000/showcase/fertilizers')
+    axios.get('https://govimithuru-backend.onrender.com/showcase/fertilizers')
       .then((res) => {
         setFertilizerItems(res.data);
       })

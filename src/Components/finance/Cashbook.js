@@ -32,7 +32,7 @@ const Cashbook = () => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const ordersResponse = await fetch('http://localhost:8000/orders');
+                const ordersResponse = await fetch('https://govimithuru-backend.onrender.com/orders');
                 const orders = await ordersResponse.json();
 
                 const salesData = [];

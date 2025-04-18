@@ -44,7 +44,7 @@ const Login = ({ onLogin }) => {
         }
 
         try {
-            const response = await axios.post('http://localhost:8000/auth/login', credentials);
+            const response = await axios.post(`https://govimithuru-backend.onrender.com/auth/login`, credentials);
             setServerMessage(response.data.message);
 
             Cookies.set('user', JSON.stringify(response.data), { expires: 10 / (24 * 60) });
@@ -64,7 +64,7 @@ const Login = ({ onLogin }) => {
     };
 
     const loginWithGoogle = () => {
-        window.open("http://localhost:8000/auth/google", "_self");
+        window.open("https://govimithuru-backend.onrender.com/auth/google", "_self");
     };
 
     const pageStyle = {

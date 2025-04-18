@@ -17,7 +17,7 @@ function UpdateInventoryItem() {
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/inventoryitem/get/${id}`)
+        axios.get(`https://govimithuru-backend.onrender.com/inventoryitem/get/${id}`)
             .then((res) => {
                 setItem(res.data.inventoryitems);
             })
@@ -32,7 +32,7 @@ function UpdateInventoryItem() {
 
     const handleUpdate = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:8000/inventoryitem/update/${id}`, item)
+        axios.put(`https://govimithuru-backend.onrender.com/inventoryitem/update/${id}`, item)
             .then(() => {
                 alert("Item updated successfully");
                 navigate('/supplyshow');

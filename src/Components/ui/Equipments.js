@@ -11,7 +11,7 @@ function Equipments() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8000/showcase/equipments')
+    axios.get('https://govimithuru-backend.onrender.com/showcase/equipments')
       .then((res) => {
         setEquipmentItems(res.data);
       })

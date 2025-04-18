@@ -14,7 +14,7 @@ const OtherExpensesDashboard = () => {
     useEffect(() => {
         const fetchExpenses = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/otherexpenses/');
+                const response = await axios.get('https://govimithuru-backend.onrender.com/api/otherexpenses/');
                 setExpenses(response.data);
             } catch (err) {
                 setError('Error fetching expenses: ' + err.message);
@@ -28,7 +28,7 @@ const OtherExpensesDashboard = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:8000/api/otherexpenses/${id}`);
+            await axios.delete(`https://govimithuru-backend.onrender.com/api/otherexpenses/${id}`);
             setExpenses(expenses.filter((expense) => expense._id !== id));
             toast.success('Expense deleted successfully!');
         } catch (err) {

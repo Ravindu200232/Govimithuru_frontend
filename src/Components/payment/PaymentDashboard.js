@@ -15,7 +15,7 @@ function PaymentDashboard() {
     useEffect(() => {
         const fetchPayments = async () => {
             try {
-                const res = await axios.get("http://localhost:8000/payments/");
+                const res = await axios.get("https://govimithuru-backend.onrender.com/payments/");
                 setPayments(res.data);
             } catch (err) {
                 toast.error("Error fetching payments: " + err.message); // Use toast for errors
@@ -30,7 +30,7 @@ function PaymentDashboard() {
     const handleDelete = async (id) => {
         if (window.confirm("Are you sure you want to delete this payment?")) { // Confirmation dialog
             try {
-                await axios.delete(`http://localhost:8000/payments/${id}`);
+                await axios.delete(`https://govimithuru-backend.onrender.com/payments/${id}`);
                 setPayments(payments.filter(payment => payment._id !== id));
                 toast.success("Payment deleted successfully"); // Show success toast
             } catch (err) {

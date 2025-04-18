@@ -11,7 +11,7 @@ function OrganicFarming() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8000/showcase/organic-farming')
+    axios.get('https://govimithuru-backend.onrender.com/showcase/organic-farming')
       .then((res) => {
         setFarmingItems(res.data);
       })

@@ -11,7 +11,7 @@ const PayCashDashboard = () => {
     useEffect(() => {
         const fetchPayments = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/paycash');
+                const response = await axios.get('https://govimithuru-backend.onrender.com/paycash');
                 setPayments(response.data.payments);
                 setLoading(false);
             } catch (err) {
@@ -26,7 +26,7 @@ const PayCashDashboard = () => {
 
     const handleDeletePayment = async (paymentId) => {
         try {
-            await axios.delete(`http://localhost:8000/paycash/${paymentId}`);
+            await axios.delete(`https://govimithuru-backend.onrender.com/paycash/${paymentId}`);
             setPayments(prevPayments => prevPayments.filter(payment => payment._id !== paymentId));
             toast.success('Payment deleted successfully!');
         } catch (err) {

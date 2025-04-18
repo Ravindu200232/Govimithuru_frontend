@@ -15,7 +15,7 @@ function BestSellerDashboard() {
 
     const fetchBestSellers = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/bestselling/');
+            const response = await axios.get('https://govimithuru-backend.onrender.com/bestselling/');
             setBestSellers(response.data);
             setLoading(false);
         } catch (err) {
@@ -30,7 +30,7 @@ function BestSellerDashboard() {
 
     const handleDeleteBestSeller = async (id) => {
         try {
-            await axios.delete(`http://localhost:8000/bestselling/delete/${id}`);
+            await axios.delete(`https://govimithuru-backend.onrender.com/bestselling/delete/${id}`);
             setBestSellers(bestSellers.filter(item => item._id !== id));
             toast.success("Item deleted successfully.");
         } catch (err) {

@@ -18,7 +18,7 @@ function Carts() {
 
     const fetchCardItems = async () => {
         try {
-            const res = await axios.get('http://localhost:8000/card');
+            const res = await axios.get('https://govimithuru-backend.onrender.com/card');
             setCardItems(res.data);
         } catch (err) {
             console.error('Error fetching card items:', err);
@@ -30,7 +30,7 @@ function Carts() {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:8000/card/delete/${id}`);
+            await axios.delete(`https://govimithuru-backend.onrender.com/card/delete/${id}`);
             setCardItems(cardItems.filter(item => item._id !== id));
         } catch (err) {
             console.error('Error deleting card item:', err);

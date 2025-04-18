@@ -14,7 +14,7 @@ function SalaryDashboard() {
 
   useEffect(() => {
     // Fetch salary records
-    axios.get('http://localhost:8000/salary')
+    axios.get('https://govimithuru-backend.onrender.com/salary')
       .then(response => {
         setSalaries(response.data);
         setLoading(false);
@@ -104,7 +104,7 @@ function SalaryDashboard() {
       closeOnClick: true,
       onClose: () => {
         // Handle deletion on confirmation
-        axios.delete(`http://localhost:8000/salary/delete/${id}`)
+        axios.delete(`https://govimithuru-backend.onrender.com/salary/delete/${id}`)
           .then(() => {
             toast.success('Salary record deleted successfully');
             setSalaries(salaries.filter(salary => salary._id !== id)); // Update local state

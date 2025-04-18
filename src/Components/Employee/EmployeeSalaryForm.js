@@ -16,7 +16,7 @@ function EmployeeSalaryForm() {
 
   useEffect(() => {
     // Fetch employee list to choose from
-    axios.get('http://localhost:8000/employee')
+    axios.get('https://govimithuru-backend.onrender.com/employee')
       .then(response => setEmployees(response.data))
       .catch(err => setError('Failed to fetch employees'));
   }, []);
@@ -40,7 +40,7 @@ function EmployeeSalaryForm() {
     const totalSalary = calculateTotalSalary();
     const basicSalary = calculateBasicSalary();
 
-    axios.post('http://localhost:8000/salary/add', {
+    axios.post('https://govimithuru-backend.onrender.com/salary/add', {
       employeeId,
       basicSalary,
       bonus: parseFloat(bonus),

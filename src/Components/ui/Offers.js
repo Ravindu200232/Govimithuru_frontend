@@ -9,7 +9,7 @@ function Offers() {
   useEffect(() => {
     const fetchOffers = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/offers'); // Adjust the URL as needed
+        const response = await axios.get('https://govimithuru-backend.onrender.com/offers'); // Adjust the URL as needed
         console.log(response.data); // Log the offers data
         setOffers(response.data);
       } catch (error) {

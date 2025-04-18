@@ -15,7 +15,7 @@ function Description() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/showcase/get/${id}`)
+    axios.get(`https://govimithuru-backend.onrender.com/showcase/get/${id}`)
       .then((res) => {
         setSeedItem(res.data.showcaseItem);
       })
@@ -24,7 +24,7 @@ function Description() {
         toast.error('Error fetching item details');
       });
 
-    axios.get(`http://localhost:8000/reviews/item/${id}`)
+    axios.get(`https://govimithuru-backend.onrender.com/reviews/item/${id}`)
       .then((res) => {
         setReviews(res.data);
       })
@@ -57,7 +57,7 @@ function Description() {
 
     const discountedPrice = getDiscountedPrice(seedItem.price, seedItem.discount);
 
-    axios.post('http://localhost:8000/card/add', {
+    axios.post('https://govimithuru-backend.onrender.com/card/add', {
       itemNamec: seedItem.name,
       categoryc: seedItem.category,
       pricec: discountedPrice.toFixed(2),
@@ -86,7 +86,7 @@ function Description() {
       return toast.error('Please fill out all fields');
     }
 
-    axios.post('http://localhost:8000/reviews/add', {
+    axios.post('https://govimithuru-backend.onrender.com/reviews/add', {
       itemId: id,
       reviewerName: newReview.reviewerName,
       reviewText: newReview.reviewText,
@@ -95,7 +95,7 @@ function Description() {
     .then(() => {
       toast.success('Review added successfully');
       setNewReview({ reviewerName: '', reviewText: '', rating: 1 });
-      axios.get(`http://localhost:8000/reviews/item/${id}`)
+      axios.get(`https://govimithuru-backend.onrender.com/reviews/item/${id}`)
         .then((res) => setReviews(res.data))
         .catch((err) => console.error('Error fetching reviews:', err));
     })

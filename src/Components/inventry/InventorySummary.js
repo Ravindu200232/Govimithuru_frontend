@@ -17,7 +17,7 @@ const InventorySummary = () => {
     useEffect(() => {
         const fetchInventoryItems = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/inventoryitem'); // Adjust API URL as needed
+                const response = await axios.get('https://govimithuru-backend.onrender.com/inventoryitem'); // Adjust API URL as needed
                 setInventoryData(response.data);
                 prepareChartData(response.data);
                 summarizeData(response.data);

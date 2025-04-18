@@ -17,7 +17,7 @@ const OrderSummaryChart = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/orders'); // Adjust API URL as needed
+                const response = await axios.get('https://govimithuru-backend.onrender.com/orders'); // Adjust API URL as needed
                 setOrderData(response.data);
                 prepareChartData(response.data);
                 prepareSummaryTableData(response.data);

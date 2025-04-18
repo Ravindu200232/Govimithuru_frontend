@@ -35,7 +35,7 @@ function OfferForm() {
     formData.append('link', link);
 
     try {
-      await axios.post('http://localhost:8000/offers/add', formData);
+      await axios.post('https://govimithuru-backend.onrender.com/offers/add', formData);
       toast.success('Offer Added');
       resetForm();
     } catch (err) {

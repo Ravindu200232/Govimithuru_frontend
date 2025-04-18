@@ -15,7 +15,7 @@ function CropSolutionDashboard() {
 
     const fetchCropSolutions = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/cropsolutions/');
+            const response = await axios.get('https://govimithuru-backend.onrender.com/cropsolutions/');
             setCropSolutions(response.data);
             setLoading(false);
         } catch (err) {
@@ -30,7 +30,7 @@ function CropSolutionDashboard() {
 
     const handleDeleteCropSolution = async (id) => {
         try {
-            await axios.delete(`http://localhost:8000/cropsolutions/delete/${id}`);
+            await axios.delete(`https://govimithuru-backend.onrender.com/cropsolutions/delete/${id}`);
             setCropSolutions(cropSolutions.filter(solution => solution._id !== id));
             toast.success("Crop solution deleted successfully.");
         } catch (err) {

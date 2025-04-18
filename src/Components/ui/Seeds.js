@@ -11,7 +11,7 @@ function Seeds() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8000/showcase/seeds')
+    axios.get('https://govimithuru-backend.onrender.com/showcase/seeds')
       .then((res) => {
         setSeedItems(res.data);
       })

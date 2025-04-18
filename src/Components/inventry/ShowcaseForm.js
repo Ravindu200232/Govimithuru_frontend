@@ -163,7 +163,7 @@ function ShowcaseForm() {
     formData.append('discount', discount);
 
     try {
-      await axios.post('http://localhost:8000/showcase/add', formData);
+      await axios.post('https://govimithuru-backend.onrender.com/showcase/add', formData);
       toast.success('Showcase Item Added');
       resetForm();
     } catch (err) {

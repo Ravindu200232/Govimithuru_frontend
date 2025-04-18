@@ -11,7 +11,7 @@ function GrowthPromoters() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8000/showcase/Growthpromoters')
+    axios.get('https://govimithuru-backend.onrender.com/showcase/Growthpromoters')
       .then((res) => {
         setPromoterItems(res.data);
       })

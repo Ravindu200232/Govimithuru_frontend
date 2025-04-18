@@ -12,7 +12,7 @@ const CartSummary = () => {
     useEffect(() => {
         const fetchSummary = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/card');
+                const response = await axios.get('https://govimithuru-backend.onrender.com/card');
                 prepareChartData(response.data);
                 prepareItemsSummary(response.data);
             } catch (error) {

@@ -11,7 +11,7 @@ function Remedies() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8000/showcase/remedies')
+    axios.get('https://govimithuru-backend.onrender.com/showcase/remedies')
       .then((res) => {
         setRemedyItems(res.data);
       })

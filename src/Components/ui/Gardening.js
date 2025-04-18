@@ -11,7 +11,7 @@ function Gardening() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8000/showcase/gardening')
+    axios.get('https://govimithuru-backend.onrender.com/showcase/gardening')
       .then((res) => {
         setGardeningItems(res.data);
       })

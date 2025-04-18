@@ -10,7 +10,7 @@ function CropSolution() {
     // Fetch crop solutions from the API
     const fetchCrops = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/cropSolutions'); // Adjust URL as needed
+        const response = await axios.get('https://govimithuru-backend.onrender.com/cropSolutions'); // Adjust URL as needed
         setCrops(response.data);
       } catch (error) {
         console.error('Error fetching crop solutions:', error);

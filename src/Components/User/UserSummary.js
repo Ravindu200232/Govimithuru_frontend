@@ -17,7 +17,7 @@ const UserSummary = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/user'); // Adjust API URL as needed
+                const response = await axios.get('https://govimithuru-backend.onrender.com/user'); // Adjust API URL as needed
                 setUserData(response.data);
                 prepareChartData(response.data);
                 prepareTableData(response.data);

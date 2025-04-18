@@ -16,7 +16,7 @@ function AllInventory() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:8000/inventoryitem/")
+        axios.get("https://govimithuru-backend.onrender.com/inventoryitem/")
             .then((res) => {
                 setItems(res.data);
             })
@@ -30,7 +30,7 @@ function AllInventory() {
     };
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:8000/inventoryitem/delete/${id}`)
+        axios.delete(`https://govimithuru-backend.onrender.com/inventoryitem/delete/${id}`)
             .then((res) => {
                 toast.success(res.data.status);
                 setItems((prevItems) => prevItems.filter(item => item._id !== id));
@@ -41,7 +41,7 @@ function AllInventory() {
     };
 
     const handleAggregate = () => {
-        axios.post("http://localhost:8000/availableitem/aggregate")
+        axios.post("https://govimithuru-backend.onrender.com/availableitem/aggregate")
             .then((res) => {
                 toast.success(res.data.message);
             })
@@ -51,7 +51,7 @@ function AllInventory() {
     };
 
     const handleUpdate = (item) => {
-        axios.put(`http://localhost:8000/inventoryitem/update/${item._id}`, item)
+        axios.put(`https://govimithuru-backend.onrender.com/inventoryitem/update/${item._id}`, item)
             .then((res) => {
                 toast.success(res.data.status);
                 setItems((prevItems) => prevItems.map(i => (i._id === item._id ? item : i)));

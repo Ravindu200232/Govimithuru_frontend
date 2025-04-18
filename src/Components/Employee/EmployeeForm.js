@@ -88,7 +88,7 @@ function EmployeeForm() {
                 payload.drivingNic = drivingNic;
             }
 
-            const response = await axios.post('http://localhost:8000/employee/validate', payload);
+            const response = await axios.post('https://govimithuru-backend.onrender.com/employee/validate', payload);
             return response.data.isUnique;
         } catch (err) {
             setError('Failed to validate unique fields. Please try again.');
@@ -160,7 +160,7 @@ function EmployeeForm() {
         }
 
         try {
-            await axios.post('http://localhost:8000/employee/add', formData);
+            await axios.post('https://govimithuru-backend.onrender.com/employee/add', formData);
             toast.success('Employee added successfully!');
             resetForm();
         } catch (err) {

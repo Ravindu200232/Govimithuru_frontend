@@ -9,7 +9,7 @@ const AttendanceDashboard = () => {
 
     const fetchAttendance = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/api/attendances/');
+            const response = await axios.get('https://govimithuru-backend.onrender.com/api/attendances/');
             setAttendanceRecords(response.data);
             setErrorMessage('');
         } catch (error) {
@@ -20,7 +20,7 @@ const AttendanceDashboard = () => {
 
     const deleteAttendance = async (id) => {
         try {
-            await axios.delete(`http://localhost:8000/api/attendances/${id}`);
+            await axios.delete(`https://govimithuru-backend.onrender.com/api/attendances/${id}`);
             toast.success('Attendance record deleted successfully!');
             fetchAttendance();
         } catch (error) {

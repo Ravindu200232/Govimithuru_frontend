@@ -154,7 +154,7 @@ function InventorySupplyform() {
       totalPrice: totalPrice
     };
 
-    axios.post("http://localhost:8000/inventoryitem/add", newSupItem)
+    axios.post("https://govimithuru-backend.onrender.com/inventoryitem/add", newSupItem)
       .then(() => {
         toast.success("Item Added");
         resetForm();

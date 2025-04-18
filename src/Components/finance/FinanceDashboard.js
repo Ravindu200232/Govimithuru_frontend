@@ -13,7 +13,7 @@ function FinanceDashboard() {
     }, []);
 
     const fetchFinances = () => {
-        axios.get("http://localhost:8000/finance/")
+        axios.get("https://govimithuru-backend.onrender.com/finance/")
             .then((res) => {
                 setFinances(res.data);
             })
@@ -29,7 +29,7 @@ function FinanceDashboard() {
             return;
         }
 
-        axios.get(`http://localhost:8000/finance/search?query=${encodeURIComponent(search)}`)
+        axios.get(`https://govimithuru-backend.onrender.com/finance/search?query=${encodeURIComponent(search)}`)
             .then((res) => {
                 setFinances(res.data);
             })

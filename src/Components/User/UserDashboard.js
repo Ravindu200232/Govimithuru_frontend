@@ -19,7 +19,7 @@ function UserDashboard() {
 
     const fetchUsers = async () => {
         try {
-            const res = await axios.get("http://localhost:8000/user/");
+            const res = await axios.get("https://govimithuru-backend.onrender.com/user/");
             setUsers(res.data);
         } catch (err) {
             toast.error(err.message);
@@ -28,7 +28,7 @@ function UserDashboard() {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:8000/user/delete/${id}`);
+            await axios.delete(`https://govimithuru-backend.onrender.com/user/delete/${id}`);
             setUsers(users.filter(user => user._id !== id));
             toast.success("User deleted successfully");
         } catch (err) {
@@ -49,7 +49,7 @@ function UserDashboard() {
     const handleUpdate = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:8000/user/update/${selectedUser._id}`, formData);
+            await axios.put(`https://govimithuru-backend.onrender.com/user/update/${selectedUser._id}`, formData);
             fetchUsers();
             setSelectedUser(null);
             setFormData({ firstname: '', lastname: '', username: '', email: '' });

@@ -11,7 +11,7 @@ const ReviewDashboard = () => {
 
   const fetchAllReviews = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/reviews/'); // Adjust this path if necessary
+      const response = await axios.get('https://govimithuru-backend.onrender.com/reviews/'); // Adjust this path if necessary
       // Add automatically generated item IDs to each review for display
       const reviewsWithFakeItemId = response.data.map(review => ({
         ...review,

@@ -12,7 +12,7 @@ const FinancePaycheckDashboard = () => {
     useEffect(() => {
         const fetchReceipts = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/api/givechecks/');
+                const response = await axios.get('https://govimithuru-backend.onrender.com/api/givechecks/');
                 setReceipts(response.data);
             } catch (err) {
                 setError('Error fetching receipts: ' + err.message);
@@ -27,7 +27,7 @@ const FinancePaycheckDashboard = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this receipt?')) {
             try {
-                await axios.delete(`http://localhost:8000/api/givechecks/${id}`);
+                await axios.delete(`https://govimithuru-backend.onrender.com/api/givechecks/${id}`);
                 setReceipts(receipts.filter((receipt) => receipt._id !== id));
                 alert('Receipt deleted successfully');
             } catch (err) {

@@ -15,7 +15,7 @@ function Cart() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8000/card/')
+    axios.get('https://govimithuru-backend.onrender.com/card/')
       .then(response => {
         setCartItems(response.data);
         const initialQuantities = {};
@@ -65,7 +65,7 @@ function Cart() {
     sessionStorage.setItem('orderSummary', JSON.stringify(orderSummary));
 
     const updatePromises = orderSummary.map(item => {
-      return axios.put(`http://localhost:8000/card/update/${item.id}`, { quantityc: item.quantity })
+      return axios.put(`https://govimithuru-backend.onrender.com/card/update/${item.id}`, { quantityc: item.quantity })
         .then(() => {
           console.log(`Quantity for item ${item.id} updated successfully`);
         })
@@ -78,7 +78,7 @@ function Cart() {
     Promise.all(updatePromises)
       .then(() => {
         const deletePromises = selectedItems.map(item => {
-          return axios.delete(`http://localhost:8000/card/delete/${item._id}`)
+          return axios.delete(`https://govimithuru-backend.onrender.com/card/delete/${item._id}`)
             .then(() => {
               console.log(`Item ${item._id} deleted successfully`);
               toast.success(`Item ${item.itemNamec} removed from cart.`);
@@ -108,7 +108,7 @@ function Cart() {
   };
 
   const removeItem = (id) => {
-    axios.delete(`http://localhost:8000/card/delete/${id}`)
+    axios.delete(`https://govimithuru-backend.onrender.com/card/delete/${id}`)
       .then(() => {
         setCartItems(cartItems.filter(item => item._id !== id));
         toast.success('Item removed from cart.');

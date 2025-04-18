@@ -15,7 +15,7 @@ function OfferDashboard() {
 
     const fetchOffers = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/offers/');
+            const response = await axios.get('https://govimithuru-backend.onrender.com/offers/');
             setOffers(response.data);
             setLoading(false);
         } catch (err) {
@@ -30,7 +30,7 @@ function OfferDashboard() {
 
     const handleDeleteOffer = async (id) => {
         try {
-            await axios.delete(`http://localhost:8000/offers/delete/${id}`);
+            await axios.delete(`https://govimithuru-backend.onrender.com/offers/delete/${id}`);
             setOffers(offers.filter(offer => offer._id !== id));
             toast.success("Offer deleted successfully.");
         } catch (err) {

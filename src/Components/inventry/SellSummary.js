@@ -12,7 +12,7 @@ const SellSummary = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const response = await fetch('http://localhost:8000/orders/');
+                const response = await fetch('https://govimithuru-backend.onrender.com/orders/');
                 const orders = await response.json();
 
                 // Aggregate sales

@@ -17,7 +17,7 @@ function InventoryDashboard() {
     }, []);
 
     const fetchItems = () => {
-        axios.get("http://localhost:8000/availableitem/")
+        axios.get("https://govimithuru-backend.onrender.com/availableitem/")
             .then((res) => {
                 setItems(res.data);
                 setFilteredItems(res.data);
@@ -44,7 +44,7 @@ function InventoryDashboard() {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:8000/availableitem/${id}`);
+            await axios.delete(`https://govimithuru-backend.onrender.com/availableitem/${id}`);
             toast.success("Item deleted successfully");
             fetchItems();
         } catch (err) {

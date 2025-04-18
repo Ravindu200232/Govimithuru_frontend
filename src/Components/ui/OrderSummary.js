@@ -144,8 +144,8 @@ function OrderSummary() {
     };
 
     try {
-      await axios.post('http://localhost:8000/orders/add', orderData);
-      await axios.post('http://localhost:8000/delivery/add', deliveryData);
+      await axios.post('https://govimithuru-backend.onrender.com/orders/add', orderData);
+      await axios.post('https://govimithuru-backend.onrender.com/delivery/add', deliveryData);
 
       if (customerInfo.paymentType === 'online') {
         const paymentData = {
@@ -157,7 +157,7 @@ function OrderSummary() {
           cvv: paymentDetails.cvv,
           totalPrice: totalPrice,  // Make sure to send totalPrice
         };
-        await axios.post('http://localhost:8000/payments/add', paymentData);  // Fix the payment endpoint
+        await axios.post('https://govimithuru-backend.onrender.com/payments/add', paymentData);  // Fix the payment endpoint
       }
 
       navigate(`/confirmation/${orderId}`, { state: { orderData, totalPrice } });

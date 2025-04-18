@@ -18,7 +18,7 @@ function ShowcaseDashboard() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:8000/showcase/")
+        axios.get("https://govimithuru-backend.onrender.com/showcase/")
             .then((res) => {
                 setItems(res.data);
                 setLoading(false);
@@ -50,7 +50,7 @@ function ShowcaseDashboard() {
             formData.append('image', updatedImage); // Include updated image
         }
 
-        axios.put(`http://localhost:8000/showcase/update/${id}`, formData)
+        axios.put(`https://govimithuru-backend.onrender.com/showcase/update/${id}`, formData)
             .then(() => {
                 toast.success("Item updated successfully");
                 setEditId(null);
@@ -67,7 +67,7 @@ function ShowcaseDashboard() {
     };
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:8000/showcase/delete/${id}`)
+        axios.delete(`https://govimithuru-backend.onrender.com/showcase/delete/${id}`)
             .then(() => {
                 setItems(items.filter(item => item._id !== id));
                 toast.success("Showcase Item Deleted");

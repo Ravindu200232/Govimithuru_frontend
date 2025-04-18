@@ -16,7 +16,7 @@ function OrderDashboard() {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const res = await axios.get('http://localhost:8000/orders/');
+                const res = await axios.get('https://govimithuru-backend.onrender.com/orders/');
                 setOrders(res.data);
             } catch (err) {
                 toast.error('Error fetching orders: ' + err.message);
@@ -36,7 +36,7 @@ function OrderDashboard() {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:8000/orders/delete/${id}`);
+            await axios.delete(`https://govimithuru-backend.onrender.com/orders/delete/${id}`);
             toast.success('Order deleted successfully');
             setOrders(prevOrders => prevOrders.filter(order => order._id !== id));
         } catch (err) {
@@ -46,7 +46,7 @@ function OrderDashboard() {
 
     const handleConfirm = async (id) => {
         try {
-            await axios.put(`http://localhost:8000/orders/update/${id}`, { status: 'Confirmed' });
+            await axios.put(`https://govimithuru-backend.onrender.com/orders/update/${id}`, { status: 'Confirmed' });
             toast.success('Order confirmed successfully');
             setOrders(prevOrders =>
                 prevOrders.map(order =>
@@ -67,7 +67,7 @@ function OrderDashboard() {
                     status: newStatus
                 };
 
-                await axios.put(`http://localhost:8000/orders/update/${id}`, updatedOrder);
+                await axios.put(`https://govimithuru-backend.onrender.com/orders/update/${id}`, updatedOrder);
                 toast.success('Order updated successfully');
                 setOrders(prevOrders =>
                     prevOrders.map(order =>

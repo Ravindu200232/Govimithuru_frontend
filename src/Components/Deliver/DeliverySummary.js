@@ -17,7 +17,7 @@ const DeliverySummary = () => {
     useEffect(() => {
         const fetchDeliveries = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/delivery'); // Adjust API URL as needed
+                const response = await axios.get('https://govimithuru-backend.onrender.com/delivery'); // Adjust API URL as needed
                 setDeliveryData(response.data);
                 prepareChartData(response.data);
                 prepareTableData(response.data);

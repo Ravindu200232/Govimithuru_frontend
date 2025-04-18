@@ -9,7 +9,7 @@ function Bulk() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8000/showcase/bulk')
+    axios.get('https://govimithuru-backend.onrender.com/showcase/bulk')
       .then((res) => {
         setBulkItems(res.data);
       })

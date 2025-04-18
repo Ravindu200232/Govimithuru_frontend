@@ -77,7 +77,7 @@ const Signup = () => {
             return;
         }
         try {
-            const response = await axios.post('http://localhost:8000/auth/signup', formData);
+            const response = await axios.post('https://govimithuru-backend.onrender.com/auth/signup', formData);
             setFormMessage(response.data);
             navigate('/login');
         } catch (error) {

@@ -29,7 +29,7 @@ const OtherExpensesForm = () => {
         setLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:8000/api/otherexpenses/create', {
+            const response = await axios.post('https://govimithuru-backend.onrender.com/api/otherexpenses/create', {
                 expenseName,
                 expenseDescription,
                 amount,

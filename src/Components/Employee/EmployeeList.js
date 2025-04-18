@@ -29,7 +29,7 @@ function EmployeeList() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get('http://localhost:8000/employee/')
+        axios.get('https://govimithuru-backend.onrender.com/employee/')
             .then((res) => {
                 setEmployees(res.data);
                 setFilteredEmployees(res.data);
@@ -62,7 +62,7 @@ function EmployeeList() {
 
     const handleDelete = (id) => {
         if (window.confirm('Are you sure you want to delete this employee?')) {
-            axios.delete(`http://localhost:8000/employee/delete/${id}`)
+            axios.delete(`https://govimithuru-backend.onrender.com/employee/delete/${id}`)
                 .then(() => {
                     setEmployees(employees.filter(emp => emp._id !== id));
                     setFilteredEmployees(filteredEmployees.filter(emp => emp._id !== id));
@@ -98,7 +98,7 @@ function EmployeeList() {
     const handleUpdate = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:8000/employee/update/${selectedEmployee._id}`, formData);
+            await axios.put(`https://govimithuru-backend.onrender.com/employee/update/${selectedEmployee._id}`, formData);
             setEmployees(employees.map(emp => (emp._id === selectedEmployee._id ? { ...emp, ...formData } : emp)));
             setFilteredEmployees(filteredEmployees.map(emp => (emp._id === selectedEmployee._id ? { ...emp, ...formData } : emp)));
             setSelectedEmployee(null);

@@ -10,7 +10,7 @@ function BestSelling() {
   // Function to fetch best-selling products from the API
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/bestSelling'); // Adjust the URL as necessary
+      const response = await axios.get('https://govimithuru-backend.onrender.com/bestSelling'); // Adjust the URL as necessary
       setProducts(response.data); // Set the fetched products
     } catch (error) {
       console.error('Error fetching best selling products:', error);

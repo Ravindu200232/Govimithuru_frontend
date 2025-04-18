@@ -17,7 +17,7 @@ const DriverList = () => {
 
     const fetchDrivers = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/drivers/');
+            const response = await axios.get('https://govimithuru-backend.onrender.com/drivers/');
             setDrivers(response.data);
         } catch (error) {
             setError('Error fetching drivers. Please try again.');
@@ -36,7 +36,7 @@ const DriverList = () => {
         if (!editingDriverId) return;
 
         try {
-            await axios.put(`http://localhost:8000/drivers/update/${editingDriverId}`, { status });
+            await axios.put(`https://govimithuru-backend.onrender.com/drivers/update/${editingDriverId}`, { status });
             fetchDrivers(); // Refresh the driver list
             setEditingDriverId(null); // Reset the editing driver
             setStatus(''); // Reset the status input
@@ -50,7 +50,7 @@ const DriverList = () => {
 
     const handleDelete = async (driverId) => {
         try {
-            await axios.delete(`http://localhost:8000/drivers/delete/${driverId}`);
+            await axios.delete(`https://govimithuru-backend.onrender.com/drivers/delete/${driverId}`);
             fetchDrivers();
             toast.success('Driver deleted successfully');
         } catch (error) {
@@ -64,9 +64,9 @@ const DriverList = () => {
         setRefreshing(true);
         setError('');
         try {
-            const response = await axios.get('http://localhost:8000/employee/position/driver');
+            const response = await axios.get('https://govimithuru-backend.onrender.com/employee/position/driver');
             if (Array.isArray(response.data)) {
-                await axios.delete('http://localhost:8000/drivers/deleteAll');
+                await axios.delete('https://govimithuru-backend.onrender.com/drivers/deleteAll');
                 await Promise.all(response.data.map(async (employee) => {
                     const newDriver = {
                         firstName: employee.firstName,
@@ -78,7 +78,7 @@ const DriverList = () => {
                         drivingNic: employee.drivingNic,
                         birthday: employee.birthday ? new Date(employee.birthday) : undefined,
                     };
-                    await axios.post('http://localhost:8000/drivers/add', newDriver);
+                    await axios.post('https://govimithuru-backend.onrender.com/drivers/add', newDriver);
                 }));
                 toast.success('Drivers stored successfully!');
                 fetchDrivers();

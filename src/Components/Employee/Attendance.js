@@ -9,7 +9,7 @@ const Attendance = () => {
 
     const fetchAttendance = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/api/attendances/');
+            const response = await axios.get('https://govimithuru-backend.onrender.com/api/attendances/');
             setAttendanceRecords(response.data);
             setErrorMessage('');
         } catch (error) {
@@ -20,7 +20,7 @@ const Attendance = () => {
 
     const markAttendance = async (employeeName, nic) => {
         try {
-            await axios.post('http://localhost:8000/api/attendances/increment', { employeeName, nic });
+            await axios.post('https://govimithuru-backend.onrender.com/api/attendances/increment', { employeeName, nic });
             toast.success('Attendance marked successfully!');
             fetchAttendance();
         } catch (error) {

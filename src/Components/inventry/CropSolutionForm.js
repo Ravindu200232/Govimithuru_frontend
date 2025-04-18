@@ -35,7 +35,7 @@ function CropSolutionForm() {
     formData.append('link', link);
 
     try {
-      await axios.post('http://localhost:8000/cropSolutions/add', formData);
+      await axios.post('https://govimithuru-backend.onrender.com/cropSolutions/add', formData);
       toast.success('Crop Solution Added'); // Use toast for success message
       resetForm();
     } catch (err) {

@@ -19,7 +19,7 @@ const PaymentSummary = () => {
     useEffect(() => {
         const fetchPaymentData = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/payments'); // Adjust API URL as needed
+                const response = await axios.get('https://govimithuru-backend.onrender.com/payments'); // Adjust API URL as needed
                 setPaymentData(response.data);
                 prepareChartData(response.data);
                 prepareTableData(response.data);

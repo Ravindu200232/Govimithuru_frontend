@@ -12,7 +12,7 @@ const AlertDashboard = () => {
         // Fetch inventory alerts when the component loads
         const fetchAlerts = async () => {
             try {
-                const response = await axios.get("http://localhost:8000/inventoryalert/");
+                const response = await axios.get("https://govimithuru-backend.onrender.com/inventoryalert/");
                 setAlerts(response.data);
                 setLoading(false);
             } catch (err) {
@@ -26,7 +26,7 @@ const AlertDashboard = () => {
 
     const handleDeleteAlert = async (alertId) => {
         try {
-            await axios.delete(`http://localhost:8000/inventoryalert/${alertId}`);
+            await axios.delete(`https://govimithuru-backend.onrender.com/inventoryalert/${alertId}`);
             setAlerts(alerts.filter(alert => alert._id !== alertId));
             toast.success("Alert deleted successfully.");
         } catch (err) {

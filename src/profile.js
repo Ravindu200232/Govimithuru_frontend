@@ -11,7 +11,7 @@ const Profile = () => {
     const fetchOrders = async () => {
       if (user) {
         try {
-          const response = await fetch(`http://localhost:8000/orders?customerName=${encodeURIComponent(user.firstname + ' ' + user.lastname)}`);
+          const response = await fetch(`https://govimithuru-backend.onrender.com/orders?customerName=${encodeURIComponent(user.firstname + ' ' + user.lastname)}`);
           if (!response.ok) throw new Error('Failed to fetch orders');
           const data = await response.json();
           setOrders(data);

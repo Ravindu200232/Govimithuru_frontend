@@ -14,7 +14,7 @@ const CashPay = () => {
     useEffect(() => {
         const fetchCashOrders = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/orders/cash-orders');
+                const response = await axios.get('https://govimithuru-backend.onrender.com/orders/cash-orders');
                 console.log("Cash orders fetched:", response.data);
                 setCashOrders(response.data);
             } catch (error) {
@@ -37,7 +37,7 @@ const CashPay = () => {
         const signatureDataUrl = signatureCanvas.getTrimmedCanvas().toDataURL("image/png");
 
         try {
-            const paymentResponse = await axios.post('http://localhost:8000/paycash/confirm', {
+            const paymentResponse = await axios.post('https://govimithuru-backend.onrender.com/paycash/confirm', {
                 orderId,
                 amountPaid: totalAmount,
                 signature: signatureDataUrl,
@@ -63,7 +63,7 @@ const CashPay = () => {
 
     const handleDeleteOrder = async (orderId) => {
         try {
-            await axios.delete(`http://localhost:8000/orders/delete/${orderId}`);
+            await axios.delete(`https://govimithuru-backend.onrender.com/orders/delete/${orderId}`);
             setCashOrders(prev => prev.filter(order => order._id !== orderId));
             toast.success('Order deleted successfully!');
         } catch (error) {

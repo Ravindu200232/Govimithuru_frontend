@@ -33,7 +33,7 @@ const SellSummaryFinance = () => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const ordersResponse = await fetch('http://localhost:8000/orders');
+                const ordersResponse = await fetch('https://govimithuru-backend.onrender.com/orders');
                 const orders = await ordersResponse.json();
 
                 const summary = {};
@@ -62,7 +62,7 @@ const SellSummaryFinance = () => {
                 setTotalSales(totalSalesAmount);
 
                 // Fetch expenses and filter by selected month
-                const expensesResponse = await axios.get('http://localhost:8000/api/otherexpenses/');
+                const expensesResponse = await axios.get('https://govimithuru-backend.onrender.com/api/otherexpenses/');
                 const filteredExpenses = expensesResponse.data.filter(expense => isInSelectedMonth(expense.date));
                 const totalExpenses = filteredExpenses.reduce((acc, expense) => acc + (expense.amount || 0), 0);
                 
@@ -70,7 +70,7 @@ const SellSummaryFinance = () => {
                 setTotalOtherExpenses(totalExpenses);
 
                 // Fetch paychecks and filter by selected month
-                const paychecksResponse = await fetch('http://localhost:8000/api/givechecks');
+                const paychecksResponse = await fetch('https://govimithuru-backend.onrender.com/api/givechecks');
                 const paychecks = await paychecksResponse.json();
                 const filteredPaychecks = paychecks.filter(paycheck => isInSelectedMonth(paycheck.date));
                 const totalPaychecksAmount = filteredPaychecks.reduce((acc, paycheck) => acc + (paycheck.totalAmount || 0), 0);
@@ -79,7 +79,7 @@ const SellSummaryFinance = () => {
                 setPaycheckRecords(filteredPaychecks);
 
                 // Fetch salaries and filter by selected month
-                const salariesResponse = await fetch('http://localhost:8000/salary');
+                const salariesResponse = await fetch('https://govimithuru-backend.onrender.com/salary');
                 const salariesData = await salariesResponse.json();
                 const filteredSalaries = salariesData.filter(salary => isInSelectedMonth(salary.payday));
                 const totalSalariesAmount = filteredSalaries.reduce((acc, salary) => acc + (salary.totalSalary || 0), 0);
@@ -105,7 +105,7 @@ const SellSummaryFinance = () => {
     const handleDeleteExpense = async (id) => {
         if (window.confirm('Are you sure you want to delete this expense?')) {
             try {
-                await axios.delete(`http://localhost:8000/api/otherexpenses/${id}`);
+                await axios.delete(`https://govimithuru-backend.onrender.com/api/otherexpenses/${id}`);
                 setExpenses(expenses.filter((expense) => expense._id !== id));
                 alert('Expense deleted successfully');
             } catch (err) {
@@ -117,7 +117,7 @@ const SellSummaryFinance = () => {
     const handleDeleteSalary = async (id) => {
         if (window.confirm("Are you sure you want to delete this salary record?")) {
             try {
-                await axios.delete(`http://localhost:8000/salary/delete/${id}`);
+                await axios.delete(`https://govimithuru-backend.onrender.com/salary/delete/${id}`);
                 setSalaries(salaries.filter(salary => salary._id !== id));
                 alert('Salary record deleted successfully');
             } catch (err) {

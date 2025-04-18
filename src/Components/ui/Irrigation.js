@@ -9,7 +9,7 @@ function Irrigation() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:8000/showcase/irrigation')
+    axios.get('https://govimithuru-backend.onrender.com/showcase/irrigation')
       .then((res) => {
         setIrrigationItems(res.data);
       })

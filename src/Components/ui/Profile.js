@@ -33,7 +33,7 @@ function Profile() {
     const fetchUserProfile = async () => {
       setLoadingUser(true);
       try {
-        const response = await fetch(`http://localhost:8000/user/getByUsername/${username}`);
+        const response = await fetch(`https://govimithuru-backend.onrender.com/user/getByUsername/${username}`);
         const data = await response.json();
         
         if (data.user) {
@@ -55,7 +55,7 @@ function Profile() {
     const fetchUserOrders = async (email) => {
       setLoadingOrders(true);
       try {
-        const response = await fetch(`http://localhost:8000/orders/by-customer?email=${encodeURIComponent(email)}`);
+        const response = await fetch(`https://govimithuru-backend.onrender.com/orders/by-customer?email=${encodeURIComponent(email)}`);
         
         if (!response.ok) {
           throw new Error(`Network response was not ok: ${response.statusText}`);
@@ -81,7 +81,7 @@ function Profile() {
 
   const handleUpdate = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/user/update/${user._id}`, {
+      const response = await fetch(`https://govimithuru-backend.onrender.com/user/update/${user._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -110,7 +110,7 @@ function Profile() {
   const handleDeleteAccount = async () => {
     if (window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
       try {
-        const response = await fetch(`http://localhost:8000/user/delete/${user._id}`, { method: 'DELETE' });
+        const response = await fetch(`https://govimithuru-backend.onrender.com/user/delete/${user._id}`, { method: 'DELETE' });
 
         if (response.ok) {
           toast.success("Account deleted successfully!");

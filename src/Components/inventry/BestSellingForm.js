@@ -35,7 +35,7 @@ function BestSellingForm() {
     formData.append('link', link);
 
     try {
-      await axios.post('http://localhost:8000/bestSelling/add', formData);
+      await axios.post('https://govimithuru-backend.onrender.com/bestSelling/add', formData);
       toast.success('Best Selling Item Added'); // Use toast for success message
       resetForm();
     } catch (err) {

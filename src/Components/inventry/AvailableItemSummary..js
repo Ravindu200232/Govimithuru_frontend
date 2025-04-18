@@ -15,7 +15,7 @@ const AvailableItemSummary = () => {
     useEffect(() => {
         const fetchSummaryData = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/availableitem'); // Adjust API URL as needed
+                const response = await axios.get('https://govimithuru-backend.onrender.com/availableitem'); // Adjust API URL as needed
                 prepareChartData(response.data);
             } catch (error) {
                 console.error("Error fetching available item summary:", error);
