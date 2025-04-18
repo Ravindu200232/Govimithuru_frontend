@@ -71,12 +71,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 
-# 🚀 My React App with Vite
-
 This project is a minimal setup for React with Vite, featuring Fast Refresh, ESLint integration, and a simple gallery of screenshots.
 
 **🔗 Live Demo:**  
-👉 [https://audio-shop-frontend-git-main-ravindus-projects-7aa938e5.vercel.app/](https://audio-shop-frontend-git-main-ravindus-projects-7aa938e5.vercel.app/)
+👉 [https://govimithuru-frontend.vercel.app/)
 
 ---
 
