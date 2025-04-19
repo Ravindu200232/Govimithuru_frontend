@@ -121,10 +121,57 @@
     .organic-farming-info {
         flex-direction: column;
     }
+
+    .info-left {
+        padding: 15px;
+    }
+
+    .product-card {
+        padding: 12px; /* Reduce padding on product cards for smaller screens */
+    }
+
+    .buy-now-btn {
+        padding: 8px 18px; /* Adjust button size */
+    }
 }
 
 @media (max-width: 480px) {
     .products-grid {
         grid-template-columns: 1fr;
+        gap: 15px; /* Reduced gap between products */
+    }
+
+    .organic-farming-section {
+        padding: 15px;
+    }
+
+    .info-left, .info-right {
+        padding: 10px; /* Reduced padding on mobile */
+    }
+
+    .info-left h3, .info-left h4 {
+        font-size: 1.2rem; /* Adjust heading font size */
+    }
+
+    .read-more-btn {
+        padding: 8px 15px; /* Reduce button size for mobile */
+        font-size: 0.9rem; /* Smaller font size for buttons */
+    }
+
+    .product-card {
+        padding: 10px; /* Adjust padding */
+    }
+
+    .product-card h4 {
+        font-size: 1rem; /* Reduce product title font size */
+    }
+
+    .product-card p {
+        font-size: 0.9rem; /* Adjust product description font size */
+    }
+
+    .buy-now-btn {
+        padding: 8px 15px; /* Adjust button padding */
+        font-size: 0.9rem; /* Adjust button font size */
     }
 }

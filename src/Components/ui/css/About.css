@@ -124,4 +124,64 @@
     border: none;
     border-radius: 5px;
   }
+
+
+  /* Mobile Styles */
+@media screen and (max-width: 768px) {
+  .header-banner {
+    padding-top: 150px;
+    font-size: 1.8rem;
+    height: 200px;
+    text-align: center;
+  }
+
+  .content-section {
+    flex-direction: column;
+    margin: 20px;
+    padding: 10px;
+  }
+
+  .about-content,
+  .about-image {
+    width: 100%;
+  }
+
+  .about-content h1 {
+    font-size: 2rem;
+  }
+
+  .about-content ul li {
+    font-size: 0.95rem;
+  }
+
+  .discover-btn {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .farmers-gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .farmers-gallery img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .footer-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-left,
+  .footer-links,
+  .footer-news,
+  .footer-contact {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+}
+
   

@@ -108,23 +108,73 @@
     background-color: #3367d6;
 }
 
-/* Responsive Design */
+/* Responsive Design for Tablets and Smaller Screens */
 @media (max-width: 768px) {
     .products-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr; /* Two columns for tablets */
     }
 
     .info-left, .info-right {
-        flex: 100%;
+        flex: 100%; /* Full width for both panels */
     }
 
     .remedies-info {
-        flex-direction: column;
+        flex-direction: column; /* Stack the info panels vertically */
+    }
+
+    /* Adjust buttons for better spacing on smaller screens */
+    .read-more-btn {
+        width: 100%; /* Full width button */
+        margin-top: 15px; /* Space out from the content above */
     }
 }
 
+/* Mobile Responsiveness */
 @media (max-width: 480px) {
     .products-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* One column on mobile */
+    }
+
+    /* Adjust text size and padding for better fit on mobile */
+    .product-card {
+        padding: 12px;
+        text-align: left; /* Left-align text on mobile */
+    }
+
+    .product-card img {
+        width: 80px; /* Resize images for smaller screens */
+        height: 80px;
+        margin-bottom: 8px;
+    }
+
+    .product-card h4 {
+        font-size: 16px; /* Smaller font for headings */
+        margin-bottom: 8px;
+    }
+
+    .product-card p {
+        font-size: 14px; /* Adjust font size for better readability */
+        margin-bottom: 10px;
+    }
+
+    .buy-now-btn {
+        font-size: 16px; /* Smaller button font */
+        padding: 8px 16px; /* Adjust button padding */
+        width: 100%; /* Full width button on mobile */
+        margin-top: 15px; /* Space out from the product description */
+    }
+
+    /* Stack the info panels vertically */
+    .remedies-info {
+        flex-direction: column;
+    }
+
+    .info-left {
+        margin-bottom: 20px; /* Add some space between panels */
+    }
+
+    /* Adjust the headings and buttons */
+    .remedies-section h1 {
+        font-size: 20px; /* Smaller font size for header on mobile */
     }
 }

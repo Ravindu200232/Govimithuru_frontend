@@ -16,3 +16,16 @@
     font-weight: bold;
   }
   
+
+  @media screen and (max-width: 768px) {
+    .banner {
+      height: 300px;
+      padding: 0 20px;
+    }
+  
+    .banner h1 {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+  }
+  

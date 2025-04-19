@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { FaHome, FaShoppingCart, FaInfoCircle, FaEnvelope, FaUser } from 'react-icons/fa'; // Importing icons
+import { FaHome, FaShoppingCart, FaInfoCircle, FaEnvelope, FaUser, FaBars, FaTimes } from 'react-icons/fa'; // Importing icons
 import './css/Navbar.css';
 import logo from './img/logo.png';
 
 function Navbar({ cartItemCount }) {
   const navigate = useNavigate();
   const username = localStorage.getItem('username');
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem('user');
@@ -14,12 +15,23 @@ function Navbar({ cartItemCount }) {
     navigate('/login');
   };
 
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <nav className="navbar">
       <div className="logo">
         <img src={logo} alt="Logo" />
       </div>
-      <ul className="nav-links">
+
+      {/* Mobile menu icon (Hamburger menu) */}
+      <div className="mobile-menu-icon" onClick={toggleMobileMenu}>
+        {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+      </div>
+
+      {/* Nav links container */}
+      <ul className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
         <li>
           <NavLink to="/home" className={({ isActive }) => (isActive ? 'active-link' : '')}>
             <FaHome style={{ marginRight: '5px' }} /> Home

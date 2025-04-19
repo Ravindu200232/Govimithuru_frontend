@@ -96,4 +96,32 @@
     border: none;
     border-radius: 5px;
   }
+
+  @media screen and (max-width: 768px) {
+    .crop-solution {
+      padding: 30px 10px;
+    }
+  
+    .crops {
+      gap: 15px;
+      padding: 10px 5px;
+    }
+  
+    .crop-item {
+      padding-left: 10px;
+      margin-right: 20px;
+      width: 80px;
+    }
+  
+    .crop-item img {
+      max-width: 120px;
+      height: 120px;
+      border-radius: 15%;
+    }
+  
+    .crop-item p {
+      font-size: 16px;
+    }
+  }
+  
   

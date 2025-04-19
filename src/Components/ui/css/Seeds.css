@@ -1,7 +1,7 @@
 /* Seeds Page Styling */
 @import url('https://fonts.googleapis.com/css2?family=San+Francisco:wght@400;700&display=swap');
 .seeds-page {
-  font-family: 'Apple San Francisco', Arial, sans-serif; 
+  font-family: 'Apple San Francisco', Arial, sans-serif;
 }
 
 /* Header Styling */
@@ -53,8 +53,8 @@
 
 .sorting-options {
   display: flex;
-  gap: 10px; /* Spacing between buttons */
-  margin-top: 10px; /* Space above sorting buttons */
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .sorting-options button {
@@ -67,12 +67,12 @@
 }
 
 .sorting-options button:hover {
-  background-color: #459ca8; /* Light blue on hover */
+  background-color: #459ca8;
 }
 
 .sorting-options .active {
   background-color: #2196f3;
-  color: rgb(81, 81, 81); /* Highlight active button */
+  color: rgb(81, 81, 81);
 }
 
 .search-input {
@@ -258,9 +258,72 @@
   display: block; /* Ensures unit appears on a new line */
 }
 
-/* Ensure this class exists for other styling */
-.search-input {
-  padding: 10px;
-  width: 100%;
-  box-sizing: border-box;
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .header nav ul {
+    flex-direction: column; /* Stack the nav items vertically on tablets */
+    gap: 15px;
+    text-align: center;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr 1fr; /* Two columns on tablets */
+  }
+
+  .seeds-info {
+    flex-direction: column; /* Stack the info sections vertically */
+  }
+
+  .search-input {
+    width: 80%; /* Adjust width of the search bar */
+  }
+
+  .sorting-options {
+    flex-direction: column; /* Stack the sorting buttons vertically */
+    width: 100%;
+  }
+
+  .footer-content {
+    flex-direction: column; /* Stack footer items vertically */
+    align-items: center;
+  }
+
+  .footer-logo, .footer-explore, .footer-news, .footer-contact {
+    flex: 1 1 100%; /* Full width on mobile */
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .footer-contact input[type="email"] {
+    width: 90%; /* Adjust email input width on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: 1fr; /* Single column on small screens */
+  }
+
+  .header .logo {
+    font-size: 24px; /* Reduce logo size for smaller screens */
+  }
+
+  .search-input {
+    width: 90%; /* Almost full width for mobile */
+  }
+
+  .product-card img {
+    width: 80px; /* Resize image for small screens */
+    height: 80px;
+  }
+
+  .product-card h4, .product-card p {
+    font-size: 14px; /* Adjust font sizes for mobile */
+  }
+
+  .buy-now-btn {
+    width: 100%; /* Full width buttons for easier interaction */
+    padding: 12px;
+    font-size: 16px; /* Bigger font size on mobile for better readability */
+  }
 }

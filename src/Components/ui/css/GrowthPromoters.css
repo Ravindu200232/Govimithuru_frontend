@@ -263,4 +263,62 @@
     width: 100%;
     box-sizing: border-box;
   }
+  @media screen and (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 15px;
+    }
+  
+    .header nav ul {
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+  
+    .seeds-section h1 {
+      font-size: 24px;
+    }
+  
+    .search-input {
+      width: 90%;
+      margin-bottom: 10px;
+    }
+  
+    .sorting-options {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .seeds-info {
+      flex-direction: column;
+    }
+  
+    .info-left,
+    .info-right {
+      width: 100%;
+    }
+  
+    .products-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+    }
+  
+    .product-card img {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .footer-content {
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .footer-logo,
+    .footer-explore,
+    .footer-news,
+    .footer-contact {
+      flex: 1 1 100%;
+    }
+  }
   

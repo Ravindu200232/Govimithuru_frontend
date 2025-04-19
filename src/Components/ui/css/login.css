@@ -50,3 +50,19 @@ h2 {
     text-align: center; /* Center heading */
     margin-bottom: 20px; /* Space below heading */
 }
+@media screen and (max-width: 480px) {
+    form {
+      width: 90%; /* Allow form to scale with screen size */
+      padding: 15px;
+    }
+  
+    input, button {
+      font-size: 14px; /* Slightly smaller text on small screens */
+      padding: 8px;
+    }
+  
+    h2 {
+      font-size: 20px;
+    }
+  }
+  

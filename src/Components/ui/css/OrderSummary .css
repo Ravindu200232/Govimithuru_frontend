@@ -110,3 +110,95 @@ button:disabled {
   background-color: #ccc; /* Grey color for disabled state */
   cursor: not-allowed; /* Not-allowed cursor */
 }
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  .order-summary {
+    padding: 15px; /* Reduce padding */
+    margin: 15px; /* Reduce margin */
+  }
+
+  .order-summary h2 {
+    font-size: 1.5rem; /* Reduce heading size for mobile */
+  }
+
+  .table-container {
+    margin-bottom: 15px; /* Reduce margin around table */
+  }
+
+  table th, table td {
+    padding: 10px; /* Adjust padding for better fit on mobile */
+  }
+
+  table th {
+    font-size: 1rem; /* Adjust header font size */
+  }
+
+  table td {
+    font-size: 0.9rem; /* Slightly smaller text for table data */
+  }
+
+  .error {
+    font-size: 0.8em; /* Reduce error message size */
+  }
+
+  form label {
+    margin-bottom: 8px; /* Reduce margin for labels */
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"] {
+    padding: 10px; /* Reduce padding for input fields */
+    font-size: 1em; /* Ensure font size remains readable */
+  }
+
+  button {
+    padding: 12px 25px; /* Reduce button padding */
+    font-size: 1.1rem; /* Slightly smaller button font size */
+  }
+}
+
+/* Extra small screen adjustments */
+@media screen and (max-width: 480px) {
+  .order-summary {
+    padding: 10px; /* Further reduce padding */
+    margin: 10px; /* Further reduce margin */
+  }
+
+  .order-summary h2 {
+    font-size: 1.25rem; /* Reduce heading size even more */
+  }
+
+  table th, table td {
+    padding: 8px; /* Reduce padding further */
+  }
+
+  table th {
+    font-size: 0.9rem; /* Further reduce header font size */
+  }
+
+  table td {
+    font-size: 0.8rem; /* Further reduce data text size */
+  }
+
+  .error {
+    font-size: 0.75em; /* Make error message smaller */
+  }
+
+  form label {
+    margin-bottom: 6px; /* Reduce space between label and input */
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"] {
+    padding: 8px; /* Reduce padding */
+    font-size: 0.9rem; /* Adjust font size for small screens */
+  }
+
+  button {
+    padding: 10px 20px; /* Further reduce button padding */
+    font-size: 1rem; /* Further reduce button font size */
+  }
+}

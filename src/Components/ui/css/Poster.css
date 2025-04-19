@@ -1,3 +1,4 @@
+/* Poster Container */
 .poster {
   width: 100%; /* Full width of the parent container */
   height: auto; /* Height will adjust according to the image */
@@ -11,6 +12,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
 }
 
+/* Image Styling */
 .poster-img {
   max-width: 100%; /* Ensures the image doesn't exceed the container width */
   height: auto; /* Maintains the image's aspect ratio */
@@ -18,6 +20,29 @@
   transition: transform 0.3s ease; /* Smooth zoom effect on hover */
 }
 
+/* Hover effect on larger screens */
 .poster-img:hover {
   transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .poster {
+    margin: 15px 0; /* Reduced margin for smaller screens */
+  }
+
+  .poster-img {
+    object-fit: cover; /* Ensure the image still covers the container */
+  }
+}
+
+@media (max-width: 480px) {
+  .poster {
+    margin: 10px 0; /* Further reduced margin for mobile */
+  }
+
+  /* Disable hover effect for mobile devices */
+  .poster-img:hover {
+    transform: none; /* No zoom effect on mobile */
+  }
 }
