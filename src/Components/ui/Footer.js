@@ -157,6 +157,7 @@ function Footer() {
 const styles = {
   footerSection: {
     display: 'flex',
+    flexWrap: 'wrap',  // Allow the layout to stack on mobile devices
     justifyContent: 'space-between',
     padding: '20px',
     fontFamily: 'Cambria, Cochin, Georgia, Times, "Times New Roman", serif',
@@ -164,7 +165,7 @@ const styles = {
     position: 'relative',
   },
   footerLeft: {
-    flex: 1,
+    flex: '1 1 25%',  // Default width on desktop
     padding: '10px',
   },
   logo: {
@@ -178,7 +179,7 @@ const styles = {
     fontSize: '14px',
   },
   footerLinks: {
-    flex: 1,
+    flex: '1 1 25%',  // Default width on desktop
     padding: '10px',
   },
   footerLinksUl: {
@@ -191,15 +192,15 @@ const styles = {
     alignItems: 'center',
   },
   footerNews: {
-    flex: 1,
+    flex: '1 1 25%',  // Default width on desktop
     padding: '10px',
   },
   footerContact: {
-    flex: 1,
+    flex: '1 1 25%',  // Default width on desktop
     padding: '10px',
   },
   footerSocial: {
-    flex: 1,
+    flex: '1 1 25%',  // Default width on desktop
     padding: '10px',
   },
   socialIcons: {
@@ -224,13 +225,14 @@ const styles = {
   chatBotIcon: {
     position: 'fixed',
     bottom: '80px',
-    marginBottom:'20px',
+    marginBottom: '20px',
     right: '30px',
     backgroundColor: '#fff',
     borderRadius: '50%',
     padding: '10px',
     boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
     cursor: 'pointer',
+    zIndex: 1000,
   },
   whatsappIcon: {
     position: 'fixed',
@@ -241,6 +243,7 @@ const styles = {
     padding: '10px',
     boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
     cursor: 'pointer',
+    zIndex: 1000,
   },
   chatWindow: {
     position: 'fixed',
@@ -319,6 +322,54 @@ const styles = {
     padding: '5px',
     display: 'inline-block',
   },
+
+  // Mobile responsiveness
+  '@media (max-width: 768px)': {
+    footerSection: {
+      flexDirection: 'column',  // Stack items on small screens
+      alignItems: 'center',
+    },
+    footerLeft: {
+      textAlign: 'center',
+      flex: '1 1 100%',  // Full width
+    },
+    footerLinks: {
+      textAlign: 'center',
+      flex: '1 1 100%',  // Full width
+    },
+    footerNews: {
+      flex: '1 1 100%',
+      textAlign: 'center',
+    },
+    footerContact: {
+      flex: '1 1 100%',
+      textAlign: 'center',
+    },
+    footerSocial: {
+      flex: '1 1 100%',
+      textAlign: 'center',
+    },
+    chatWindow: {
+      width: '90%',
+      bottom: '70px',  // Adjust to avoid footer overlap
+      right: '5%',
+    },
+  },
+
+  '@media (max-width: 480px)': {
+    chatWindow: {
+      width: '100%',
+      bottom: '70px',  // Further adjust to avoid footer overlap
+      right: '0',
+    },
+    footerSection: {
+      padding: '10px',
+    },
+  },
 };
+
+
+
+
 
 export default Footer;

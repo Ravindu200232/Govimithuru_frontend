@@ -43,3 +43,44 @@
     transform: rotate(360deg);
   }
 }
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column; /* Stack content vertically */
+  }
+
+  .content {
+    margin-left: 0; /* Remove the sidebar margin */
+    margin-top: 20px; /* Add some space at the top */
+    padding: 15px; /* Reduce padding to fit better on small screens */
+  }
+
+  .App-header {
+    min-height: 60vh; /* Reduce header height on mobile */
+    font-size: calc(12px + 3vmin); /* Increase font size slightly for readability */
+    padding: 20px; /* Add some padding to prevent content from sticking to the edges */
+  }
+
+  .main-section {
+    padding: 10px; /* Reduce padding for mobile */
+  }
+
+  /* If you have a sidebar, collapse it on mobile */
+  .sidebar {
+    display: none; /* Hide the sidebar on small screens */
+  }
+}
+
+/* Very Small Screens (below 480px) */
+@media (max-width: 480px) {
+  .App-header {
+    font-size: calc(14px + 3vmin); /* Larger font size for very small screens */
+    padding: 15px; /* Adjust padding for very small screens */
+  }
+
+  .content {
+    padding: 10px; /* Less padding on very small screens */
+    margin-top: 10px; /* Adjust margin for a more compact view */
+  }
+}
