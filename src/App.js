@@ -127,179 +127,151 @@ function App() {
     <Router>
       <div>
         <Routes>
-          <Route path="/" element={<Login onLogin={handleLogin} />} />
+          {/* Home page as first open */}
+          <Route path="/" element={
+            <>
+              <Navbar />
+              <Banner />
+              <Poster />
+              <Offer />
+              <CropSolution />
+              <Poster />
+              <BestSeller />
+              <Footer />
+            </>
+          } />
           <Route path="/login" element={<Login onLogin={handleLogin} />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/admin/login" element={<AdminLogin onAdminLogin={handleAdminLogin} />} />
 
           {/* User-facing routes */}
-          
           <Route path="/home" element={
-            
-              <>
-                <Navbar />
-                <Banner />
-                <Poster />
-                <Offer />
-                <CropSolution />
-                <Poster />
-                <BestSeller />
-                <Footer />
-                </>
-                        
-                    } />
-
+            <>
+              <Navbar />
+              <Banner />
+              <Poster />
+              <Offer />
+              <CropSolution />
+              <Poster />
+              <BestSeller />
+              <Footer />
+            </>
+          } />
 
           <Route path="/profile" element={
-             <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <>
-                <Navbar />
-                <Profile />
-                <Footer />
-              </>
-            
-              <Navigate to="/profile" />
-            </ProtectedRoute>
+            <>
+              <Navbar />
+              <Profile />
+              <Footer />
+            </>
           } />
-
 
           <Route path="/products" element={
-            <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <>
-                <Navbar />
-                <Products />
-                <Footer />
-              </>
-           </ProtectedRoute>
+            <>
+              <Navbar />
+              <Products />
+              <Footer />
+            </>
           } />
           <Route path="/seeds" element={
-            
-              <>
-                <Navbar />
-                <Seeds />
-                <Footer />
-              </>
-          
+            <>
+              <Navbar />
+              <Seeds />
+              <Footer />
+            </>
           } />
           <Route path="/growthPromoters" element={
-           
-              <>
-                <Navbar />
-                <GrowthPromoters />
-                <Footer />
-              </>
-           
+            <>
+              <Navbar />
+              <GrowthPromoters />
+              <Footer />
+            </>
           } />
           <Route path="/remedies" element={
-          
-              <>
-                <Navbar />
-                <Remedies />
-                <Footer />
-              </>
-            
+            <>
+              <Navbar />
+              <Remedies />
+              <Footer />
+            </>
           } />
           <Route path="/organicFarming" element={
-            
-              <>
-                <Navbar />
-                <OrganicFarming />
-                <Footer />
-              </>
-           
+            <>
+              <Navbar />
+              <OrganicFarming />
+              <Footer />
+            </>
           } />
           <Route path="/equipments" element={
-          
-              <>
-                <Navbar />
-                <Equipments />
-                <Footer />
-              </>
-            
+            <>
+              <Navbar />
+              <Equipments />
+              <Footer />
+            </>
           } />
           <Route path="/fertilizers" element={
-           
-              <>
-                <Navbar />
-                <Fertilizers />
-                <Footer />
-              </>
-            
+            <>
+              <Navbar />
+              <Fertilizers />
+              <Footer />
+            </>
           } />
           <Route path="/irrigation" element={
-           
-              <>
-                <Navbar />
-                <Irrigation />
-                <Footer />
-              </>
-           
+            <>
+              <Navbar />
+              <Irrigation />
+              <Footer />
+            </>
           } />
           <Route path="/gardening" element={
-         
-              <>
-                <Navbar />
-                <Gardening />
-                <Footer />
-              </>
-           
+            <>
+              <Navbar />
+              <Gardening />
+              <Footer />
+            </>
           } />
           <Route path="/description/:id" element={
-           <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <>
-                <Navbar />
-                <Description />
-                <Footer />
-              </>
-            </ProtectedRoute>
+            <>
+              <Navbar />
+              <Description />
+              <Footer />
+            </>
           } />
           <Route path="/cart" element={
-           <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <>
-                <Navbar />
-                <Card />
-                <Footer />
-              </>
-           </ProtectedRoute>
+            <>
+              <Navbar />
+              <Card />
+              <Footer />
+            </>
           } />
 
-            <Route path="/contact" element={
-            <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <>
-                <Navbar />
-                <Contact />
-                <Footer />
-              </>
-            </ProtectedRoute>
+          <Route path="/contact" element={
+            <>
+              <Navbar />
+              <Contact />
+              <Footer />
+            </>
           } />
-
 
           <Route path="/order-summary" element={
-          <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <>
-                <Navbar />
-                <OrderSummary />
-                <Footer />
-              </>
-            </ProtectedRoute>
+            <>
+              <Navbar />
+              <OrderSummary />
+              <Footer />
+            </>
           } />
           <Route path="/confirmation/:orderId" element={
-           <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <>
-                <Navbar />
-                <OrderConfirmation />
-                <Footer />
-              </>
-            </ProtectedRoute>
+            <>
+              <Navbar />
+              <OrderConfirmation />
+              <Footer />
+            </>
           } />
           <Route path="/about" element={
-           <ProtectedRoute isLoggedIn={isLoggedIn}>
-              <>
-                <Navbar />
-                <About />
-                <Footer />
-              </>
-           </ProtectedRoute>
+            <>
+              <Navbar />
+              <About />
+              <Footer />
+            </>
           } />
 
           {/* Admin-facing routes */}
@@ -529,7 +501,7 @@ function App() {
             )
           } />
 
-            <Route path="/admin/payment" element={
+          <Route path="/admin/payment" element={
             isAdmin ? (
               <>
                 <NavbarA />
@@ -545,7 +517,7 @@ function App() {
             )
           } />
 
-            <Route path="/admin/offer" element={
+          <Route path="/admin/offer" element={
             isAdmin ? (
               <>
                 <NavbarA />
@@ -561,9 +533,7 @@ function App() {
             )
           } />
 
-
-
-        <Route path="/admin/offers/add" element={
+          <Route path="/admin/offers/add" element={
             isAdmin ? (
               <>
                 <NavbarA />
@@ -579,9 +549,7 @@ function App() {
             )
           } />
 
-
-
-           <Route path="/admin/cropsolution" element={
+          <Route path="/admin/cropsolution" element={
             isAdmin ? (
               <>
                 <NavbarA />
@@ -613,9 +581,6 @@ function App() {
             )
           } />
 
-
-          
-
           <Route path="/admin/bestseller" element={
             isAdmin ? (
               <>
@@ -632,8 +597,7 @@ function App() {
             )
           } />
 
-
-         <Route path="/admin/bestselling/add" element={
+          <Route path="/admin/bestselling/add" element={
             isAdmin ? (
               <>
                 <NavbarA />
@@ -648,8 +612,6 @@ function App() {
               <Navigate to="/admin/bestselling/add" />
             )
           } />
-
-          
 
           <Route path="/admin/salesSummery" element={
             isAdmin ? (
@@ -667,7 +629,7 @@ function App() {
             )
           } />
 
-        <Route path="/admin/SummeryInventory" element={
+          <Route path="/admin/SummeryInventory" element={
             isAdmin ? (
               <>
                 <NavbarA />
@@ -682,9 +644,6 @@ function App() {
               <Navigate to="/admin/login" />
             )
           } />
-
-
-
 
           <Route path="/admin/cartSummery" element={
             isAdmin ? (
@@ -702,8 +661,7 @@ function App() {
             )
           } />
 
-
-           <Route path="/admin/deliverySumery" element={
+          <Route path="/admin/deliverySumery" element={
             isAdmin ? (
               <>
                 <NavbarA />
@@ -719,9 +677,7 @@ function App() {
             )
           } />
 
-
-
-         <Route path="/admin/employee/Summery" element={
+          <Route path="/admin/employee/Summery" element={
             isAdmin ? (
               <>
                 <NavbarA />
@@ -737,8 +693,7 @@ function App() {
             )
           } />
 
-
-         <Route path="/admin/USerSummery" element={
+          <Route path="/admin/USerSummery" element={
             isAdmin ? (
               <>
                 <NavbarA />
@@ -754,7 +709,7 @@ function App() {
             )
           } />
 
-           <Route path="/admin/payments/summery" element={
+          <Route path="/admin/payments/summery" element={
             isAdmin ? (
               <>
                 <NavbarA />
@@ -769,7 +724,6 @@ function App() {
               <Navigate to="/admin/login" />
             )
           } />
-
 
           <Route path="/admin/finance/paybil" element={
             isAdmin ? (
@@ -787,7 +741,7 @@ function App() {
             )
           } />
 
-       <Route path="/admin/finance/paybildash" element={
+          <Route path="/admin/finance/paybildash" element={
             isAdmin ? (
               <>
                 <NavbarA />
@@ -803,8 +757,7 @@ function App() {
             )
           } />
 
-
-        <Route path="/finance/otherExpenciveForm" element={
+          <Route path="/finance/otherExpenciveForm" element={
             isAdmin ? (
               <>
                 <NavbarA />
@@ -819,8 +772,6 @@ function App() {
               <Navigate to="/admin/login" />
             )
           } />
-
-
 
           <Route path="/finance/otherExpencive" element={
             isAdmin ? (
@@ -854,8 +805,6 @@ function App() {
             )
           } />
 
-
-          
           <Route path="/admin/sales" element={
             isAdmin ? (
               <>
@@ -872,7 +821,6 @@ function App() {
             )
           } />
 
-          
           <Route path="/admin/sells" element={
             isAdmin ? (
               <>
@@ -905,7 +853,6 @@ function App() {
             )
           } />
 
-
           <Route path="/admin/cashbook" element={
             isAdmin ? (
               <>
@@ -921,7 +868,6 @@ function App() {
               <Navigate to="/admin/login" />
             )
           } />
-
 
           <Route path="/admin/employee/attendence" element={
             isAdmin ? (
@@ -939,7 +885,6 @@ function App() {
             )
           } />
 
-
           <Route path="/admin/employee/attDashboard" element={
             isAdmin ? (
               <>
@@ -956,7 +901,6 @@ function App() {
             )
           } />
 
-
           <Route path="/admin/user/review" element={
             isAdmin ? (
               <>
@@ -972,8 +916,6 @@ function App() {
               <Navigate to="/admin/login" />
             )
           } />
-
-
 
           <Route path="/admin/payments/cashpay" element={
             isAdmin ? (
@@ -1007,16 +949,7 @@ function App() {
             )
           } />
 
-      
-
-
-
-        
-
-
         </Routes>
-
-        
       </div>
     </Router>
   );
