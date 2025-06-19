@@ -90,7 +90,7 @@ import PayCashDashboard from './Components/payment/PayCashDashboard';
 
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
