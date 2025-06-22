@@ -4,16 +4,18 @@ import './css/BestSelling.css';
 
 function BestSelling() {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const scrollContainerRef = useRef(null);
-  const scrollAmount = 300; // Amount to scroll on each interval
+  const scrollAmount = 300;
 
-  // Function to fetch best-selling products from the API
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('https://govimithuru-backend.onrender.com/bestSelling'); // Adjust the URL as necessary
-      setProducts(response.data); // Set the fetched products
+      const response = await axios.get('https://govimithuru-backend.onrender.com/bestSelling');
+      setProducts(response.data);
     } catch (error) {
       console.error('Error fetching best selling products:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -36,10 +38,9 @@ function BestSelling() {
   };
 
   useEffect(() => {
-    fetchProducts(); // Fetch products on component mount
+    fetchProducts();
 
     const container = scrollContainerRef.current;
-
     if (!container) return;
 
     let scrollInterval = setInterval(() => {
@@ -47,15 +48,22 @@ function BestSelling() {
         left: scrollAmount,
         behavior: 'smooth',
       });
-
-      // Wrap around to the beginning
       if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
         container.scrollLeft = 0;
       }
-    }, 3000); // Adjust the interval time (in milliseconds) as needed
+    }, 3000);
 
-    return () => clearInterval(scrollInterval); // Cleanup interval on unmount
+    return () => clearInterval(scrollInterval);
   }, [scrollAmount]);
+
+  // Skeleton placeholder
+  const skeletons = Array.from({ length: 4 }).map((_, i) => (
+    <div className="product-item skeleton" key={i}>
+      <div className="img-skeleton" />
+      <div className="title-skeleton" />
+      <div className="button-skeleton" />
+    </div>
+  ));
 
   return (
     <div className="best-selling">
@@ -65,15 +73,17 @@ function BestSelling() {
         <button className="scroll-btn right" onClick={scrollRight}>›</button>
       </div>
       <div className="best-selling-products" ref={scrollContainerRef}>
-        {products.map((product, index) => (
-          <div className="product-item" key={index}>
-            <img src={product.img} alt={product.title} />
-            <h3>{product.title}</h3>
-            <a href={product.link} target="_blank" rel="noopener noreferrer">
-              <button>Shop Now</button>
-            </a>
-          </div>
-        ))}
+        {loading
+          ? skeletons
+          : products.map((product, index) => (
+              <div className="product-item" key={index}>
+                <img src={product.img} alt={product.title} />
+                <h3>{product.title}</h3>
+                <a href={product.link} target="_blank" rel="noopener noreferrer">
+                  <button>Shop Now</button>
+                </a>
+              </div>
+            ))}
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ function Navbar({ username }) {
         {username ? (
           <>
             <li><span>Welcome, {username}!</span></li>
-            <li><a href="/logout">Logout</a></li>
+            {localStorage.getItem("email")!= null && <li><a href="/logout">Logout</a></li>}
           </>
         ) : (
           <li><a href="/login">Login</a></li>

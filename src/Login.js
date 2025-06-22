@@ -56,6 +56,7 @@ const Login = ({ onLogin }) => {
                 navigate('/admin/inventory');
             } else {
                 onLogin();
+                localStorage.setItem('email', credentials.email);
                 navigate('/Home');
             }
         } catch (error) {

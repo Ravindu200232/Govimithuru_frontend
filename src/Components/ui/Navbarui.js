@@ -9,6 +9,11 @@ function Navbar({ cartItemCount }) {
   const username = localStorage.getItem('username');
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+
+  const handleLogin = ()=>{
+    navigate(`/login`)
+  }
+
   const handleLogout = () => {
     localStorage.removeItem('user');
     localStorage.removeItem('username');
@@ -69,8 +74,13 @@ function Navbar({ cartItemCount }) {
             </NavLink>
           )}
         </li>
+        
         <li>
-          <button onClick={handleLogout} style={{ cursor: 'pointer' }}>Logout</button>
+          {localStorage.getItem("email")!= null && <button onClick={handleLogout} style={{ cursor: 'pointer' }}>Logout</button>}
+        </li>
+
+        <li>
+          {localStorage.getItem("email")== null && <button onClick={handleLogin} style={{ cursor: 'pointer' }}>Login</button>}
         </li>
       </ul>
     </nav>

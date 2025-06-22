@@ -4,16 +4,18 @@ import './css/CropSolution.css';
 
 function CropSolution() {
   const [crops, setCrops] = useState([]);
+  const [loading, setLoading] = useState(true);
   const scrollContainerRef = useRef(null);
 
   useEffect(() => {
-    // Fetch crop solutions from the API
     const fetchCrops = async () => {
       try {
-        const response = await axios.get('https://govimithuru-backend.onrender.com/cropSolutions'); // Adjust URL as needed
+        const response = await axios.get('https://govimithuru-backend.onrender.com/cropSolutions');
         setCrops(response.data);
       } catch (error) {
         console.error('Error fetching crop solutions:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -27,25 +29,32 @@ function CropSolution() {
         container.scrollLeft = 0;
       } else {
         container.scrollBy({
-          left: 300, // Adjust the scroll amount as needed
+          left: 300,
           behavior: 'smooth',
         });
       }
-    }, 3000); // Adjust the interval time (in milliseconds) as needed
+    }, 3000);
 
-    return () => clearInterval(scrollInterval); // Cleanup interval on unmount
+    return () => clearInterval(scrollInterval);
   }, []);
 
   return (
     <div className="crop-solution">
       <h2>Crop Solutions</h2>
       <div className="crops" ref={scrollContainerRef}>
-        {crops.map((crop, index) => (
-          <div className="crop-item" key={index}>
-            <img src={crop.img} alt={crop.title} />
-            <p>{crop.title}</p>
-          </div>
-        ))}
+        {loading
+          ? Array.from({ length: 4 }).map((_, idx) => (
+              <div className="crop-item skeleton" key={idx}>
+                <div className="skeleton-img" />
+                <div className="skeleton-text" />
+              </div>
+            ))
+          : crops.map((crop, index) => (
+              <div className="crop-item" key={index}>
+                <img src={crop.img} alt={crop.title} />
+                <p>{crop.title}</p>
+              </div>
+            ))}
       </div>
     </div>
   );
