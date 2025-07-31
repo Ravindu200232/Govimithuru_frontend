@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { FaShoppingCart, FaTrash, FaPlus, FaMinus } from 'react-icons/fa'; // Importing icons
 import { ToastContainer, toast } from 'react-toastify'; // Import toast
 import 'react-toastify/dist/ReactToastify.css'; // Import CSS for toast
-import './css/Cart.css';
 
 function Cart() {
   const [cartItems, setCartItems] = useState([]);
@@ -129,64 +128,215 @@ function Cart() {
   };
 
   return (
-    <div className="cart-page">
-      <div className="cart-items">
-        <h2>My Cart <FaShoppingCart /></h2>
+    <div 
+      className="cart-page" 
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        padding: '2rem',
+        fontFamily: "'Poppins', sans-serif",
+        backgroundColor: '#F5F9F7',
+        minHeight: '100vh',
+        gap: '2rem'
+      }}
+    >
+      {/* Cart Items Section */}
+      <div className="cart-items" style={{ flex: '3', minWidth: '320px' }}>
+        <h2 style={{ 
+          fontSize: '2rem', 
+          marginBottom: '1rem', 
+          color: '#059669', 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: '0.5rem' 
+        }}>
+          My Cart <FaShoppingCart />
+        </h2>
+
         {cartItems.length > 0 ? (
           cartItems.map(item => (
-            <div key={item._id} className="cart-item">
+            <div key={item._id} className="cart-item" style={{
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '1rem',
+              padding: '1rem',
+              borderRadius: '15px',
+              backgroundColor: '#fff',
+              marginBottom: '1rem',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+              position: 'relative',
+              transition: 'transform 0.3s ease',
+              cursor: 'default',
+            }}>
               <input 
                 type="checkbox" 
                 checked={checkedItems[item._id]} 
                 onChange={() => handleSelectItem(item._id)} 
+                style={{ transform: 'scale(1.3)', marginTop: '1rem' }}
               />
-              <div className="cart-item-info">
+              <div className="cart-item-info" style={{ flex: 1 }}>
                 <img 
                   src={`data:image/jpeg;base64,${item.imagec}`} 
                   alt={item.itemNamec} 
-                  className="cart-item-image"
+                  style={{
+                    width: '120px',
+                    height: '120px',
+                    objectFit: 'cover',
+                    borderRadius: '10px',
+                    marginBottom: '0.5rem',
+                    border: '2px solid #059669',
+                    boxShadow: '0 4px 10px rgba(5, 150, 105, 0.3)'
+                  }}
                 />
-                <h3>{item.itemNamec}</h3>
-                <p>Category: {item.categoryc}</p>
-                <p>Price: Rs:{item.pricec.toFixed(2)}</p>
-                <div className="quantity-control">
+                <h3 style={{ margin: '0.5rem 0', fontSize: '18px', color: '#1F2937' }}>{item.itemNamec}</h3>
+                <p style={{ margin: 0, fontSize: '14px', color: '#6B7280' }}>Category: {item.categoryc}</p>
+                <p style={{ fontSize: '15px', fontWeight: '500', color: '#059669' }}>Price: Rs:{item.pricec.toFixed(2)}</p>
+
+                <div className="quantity-control" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.5rem' }}>
                   <button 
                     onClick={() => handleQuantityChange(item._id, -1)}
                     disabled={quantities[item._id] <= 1}
+                    style={{
+                      padding: '0.3rem 0.6rem',
+                      border: 'none',
+                      backgroundColor: quantities[item._id] <= 1 ? '#E5E7EB' : '#F3F4F6',
+                      borderRadius: '5px',
+                      cursor: quantities[item._id] <= 1 ? 'not-allowed' : 'pointer',
+                      transition: 'background-color 0.3s ease',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                    aria-label="Decrease quantity"
                   >
                     <FaMinus />
                   </button>
-                  <span>{quantities[item._id]}</span>
+                  <span style={{ fontSize: '16px', width: '25px', textAlign: 'center' }}>{quantities[item._id]}</span>
                   <button 
                     onClick={() => handleQuantityChange(item._id, 1)}
                     disabled={quantities[item._id] >= availability[item._id]}
+                    style={{
+                      padding: '0.3rem 0.6rem',
+                      border: 'none',
+                      backgroundColor: quantities[item._id] >= availability[item._id] ? '#FEE2E2' : '#DCFCE7',
+                      borderRadius: '5px',
+                      cursor: quantities[item._id] >= availability[item._id] ? 'not-allowed' : 'pointer',
+                      transition: 'background-color 0.3s ease',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      position: 'relative'
+                    }}
+                    aria-label="Increase quantity"
                   >
                     <FaPlus />
-                    {quantities[item._id] > availability[item._id] && (
-                      <span className="warning-message">Max reached</span>
+                    {quantities[item._id] >= availability[item._id] && (
+                      <span style={{
+                        position: 'absolute',
+                        top: '-18px',
+                        right: '-10px',
+                        fontSize: '10px',
+                        color: '#B91C1C',
+                        fontWeight: 'bold',
+                        backgroundColor: '#FEE2E2',
+                        padding: '2px 5px',
+                        borderRadius: '8px',
+                        whiteSpace: 'nowrap',
+                      }}>
+                        Max reached
+                      </span>
                     )}
                   </button>
                 </div>
-                <p>Available: {availability[item._id]}</p>
+                <p style={{ marginTop: '0.3rem', fontSize: '13px', color: '#6B7280' }}>Available: {availability[item._id]}</p>
               </div>
-              <div className="remove-item" onClick={() => removeItem(item._id)}>
+              <div 
+                className="remove-item" 
+                onClick={() => removeItem(item._id)} 
+                style={{
+                  cursor: 'pointer',
+                  color: '#EF4444',
+                  fontSize: '22px',
+                  marginTop: '0.5rem',
+                  position: 'absolute',
+                  top: '1rem',
+                  right: '1rem',
+                  transition: 'color 0.3s ease'
+                }}
+                onMouseEnter={e => e.currentTarget.style.color = '#B91C1C'}
+                onMouseLeave={e => e.currentTarget.style.color = '#EF4444'}
+                aria-label={`Remove ${item.itemNamec} from cart`}
+              >
                 <FaTrash />
               </div>
             </div>
           ))
         ) : (
-          <p>Your cart is empty</p>
+          <p style={{ fontSize: '16px', color: '#6B7280' }}>Your cart is empty</p>
         )}
       </div>
-      <div className="cart-summary">
-        <h3>TOTAL</h3>
-        <p>Subtotal: Rs:{calculateTotal()}</p>
-        <p>Delivery: Free</p>
-        <button className="checkout-btn" onClick={handleCheckout}>
+
+      {/* Cart Summary Section */}
+      <div className="cart-summary" style={{
+        flex: '1',
+        backgroundColor: '#fff',
+        padding: '2rem',
+        borderRadius: '15px',
+        boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+        height: 'fit-content',
+        minWidth: '280px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      }}>
+        <div>
+          <h3 style={{ fontSize: '1.5rem', color: '#059669', marginBottom: '1rem' }}>TOTAL</h3>
+          <p style={{ fontSize: '16px', marginBottom: '0.5rem' }}>
+            Subtotal: <strong>Rs:{calculateTotal()}</strong>
+          </p>
+          <p style={{ fontSize: '16px', marginBottom: '1.5rem' }}>
+            Delivery: <strong>Free</strong>
+          </p>
+        </div>
+        <button 
+          className="checkout-btn" 
+          onClick={handleCheckout} 
+          style={{
+            backgroundColor: '#059669',
+            color: 'white',
+            padding: '0.75rem 1.5rem',
+            fontSize: '16px',
+            borderRadius: '10px',
+            border: 'none',
+            cursor: 'pointer',
+            transition: 'background-color 0.3s ease',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '0.5rem',
+            fontWeight: '600',
+            boxShadow: '0 4px 10px rgba(5, 150, 105, 0.4)'
+          }}
+          onMouseEnter={e => e.currentTarget.style.backgroundColor = '#047857'}
+          onMouseLeave={e => e.currentTarget.style.backgroundColor = '#059669'}
+          aria-label="Proceed to checkout"
+        >
           <FaShoppingCart /> Check Out
         </button>
       </div>
-      <ToastContainer /> {/* Add ToastContainer here */}
+
+      {/* Toast Notifications */}
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 }

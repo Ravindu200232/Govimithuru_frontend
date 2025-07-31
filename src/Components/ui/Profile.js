@@ -23,6 +23,8 @@ function Profile() {
   const [sortOrder, setSortOrder] = useState('asc');
   const navigate = useNavigate();
   const username = localStorage.getItem('username');
+   // Focus effect for inputs with onFocus/onBlur handlers
+  const [focusedField, setFocusedField] = useState(null);
 
   useEffect(() => {
     if (!username) {
@@ -35,13 +37,13 @@ function Profile() {
       try {
         const response = await fetch(`https://govimithuru-backend.onrender.com/user/getByUsername/${username}`);
         const data = await response.json();
-        
+
         if (data.user) {
           setUser({
             ...data.user,
             imageUrl: data.user.imageUrl || img2
           });
-          fetchUserOrders(data.user.email); // Pass email directly
+          fetchUserOrders(data.user.email);
         } else {
           toast.error("User not found");
         }
@@ -56,11 +58,11 @@ function Profile() {
       setLoadingOrders(true);
       try {
         const response = await fetch(`https://govimithuru-backend.onrender.com/orders/by-customer?email=${encodeURIComponent(email)}`);
-        
+
         if (!response.ok) {
           throw new Error(`Network response was not ok: ${response.statusText}`);
         }
-        
+
         const data = await response.json();
         setOrders(data);
         setFilteredOrders(data);
@@ -146,168 +148,314 @@ function Profile() {
   };
 
   if (loadingUser) {
-    return <div>Loading user profile...</div>;
+    return <div style={{ textAlign: 'center', marginTop: '3rem', fontSize: '1.2rem', color: '#087B5B' }}>Loading user profile...</div>;
   }
 
+  // --- PREMIUM INLINE STYLES ---
   const containerStyle = {
+    maxWidth: '900px',
+    margin: '40px auto',
+    backgroundColor: '#ffffff',
+    padding: '30px 40px',
+    borderRadius: '15px',
+    boxShadow: '0 12px 25px rgba(8, 123, 91, 0.25)',
+    fontFamily: "'Poppins', sans-serif",
+    color: '#333',
+  };
+
+  const headingStyle = {
+    fontSize: '2.6rem',
+    fontWeight: '800',
+    color: '#087B5B',
+    marginBottom: '20px',
+    textAlign: 'center',
+    letterSpacing: '1.5px',
+  };
+
+  const profileTopStyle = {
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
-    padding: '20px',
-    backgroundColor: '#f5f5f5',
-    borderRadius: '10px',
-    width: '50%',
-    margin: '50px auto',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    gap: '40px',
+    marginBottom: '35px',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
   };
 
   const imageStyle = {
-    width: '150px',
-    height: '150px',
+    width: '160px',
+    height: '160px',
     borderRadius: '50%',
-    marginBottom: '20px',
     objectFit: 'cover',
+    boxShadow: '0 8px 20px rgba(8, 123, 91, 0.4)',
+    border: '4px solid #087B5B',
   };
 
-  const ordersContainerStyle = {
-    width: '100%',
-    marginTop: '20px',
-    borderRadius: '8px',
-    padding: '10px',
-    backgroundColor: '#ffffff',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+  const infoFieldsStyle = {
+    flexGrow: 1,
+    minWidth: '260px',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '20px 30px',
   };
 
-  const orderItemStyle = {
-    padding: '10px',
-    borderBottom: '1px solid #e0e0e0',
+  const labelStyle = {
     display: 'flex',
     flexDirection: 'column',
+    fontWeight: '600',
+    fontSize: '1.05rem',
+    color: '#555',
   };
 
-  const orderDateStyle = {
-    fontWeight: 'bold',
+  const inputStyle = {
+    marginTop: '6px',
+    padding: '10px 12px',
+    borderRadius: '8px',
+    border: '2px solid #ccc',
+    fontSize: '1rem',
+    fontWeight: '500',
+    color: '#333',
+    transition: 'border-color 0.3s ease',
   };
 
-  const orderPriceStyle = {
-    color: '#388e3c',
+  const inputFocusStyle = {
+    borderColor: '#087B5B',
+    boxShadow: '0 0 6px rgba(8,123,91,0.6)',
+    outline: 'none',
   };
+
+  const buttonGroupStyle = {
+    marginTop: '25px',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: '15px',
+  };
+
+  const buttonBase = {
+    padding: '12px 26px',
+    fontSize: '1.1rem',
+    fontWeight: '700',
+    borderRadius: '50px',
+    cursor: 'pointer',
+    border: 'none',
+    transition: 'all 0.3s ease',
+    minWidth: '160px',
+  };
+
+  const editButtonStyle = {
+    ...buttonBase,
+    backgroundColor: '#087B5B',
+    color: '#fff',
+  };
+
+  const logoutButtonStyle = {
+    ...buttonBase,
+    backgroundColor: '#6c757d',
+    color: '#fff',
+  };
+
+  const deleteButtonStyle = {
+    ...buttonBase,
+    backgroundColor: '#e63946',
+    color: '#fff',
+  };
+
+  const historyButtonStyle = {
+    ...buttonBase,
+    backgroundColor: '#264653',
+    color: '#fff',
+  };
+
+  const purchaseHistoryStyle = {
+    marginTop: '40px',
+  };
+
+  const searchInputStyle = {
+    width: '100%',
+    maxWidth: '400px',
+    padding: '10px 14px',
+    borderRadius: '50px',
+    border: '2px solid #ccc',
+    fontSize: '1rem',
+    fontWeight: '500',
+    color: '#333',
+    marginBottom: '15px',
+    transition: 'border-color 0.3s ease',
+  };
+
+  const sortButtonStyle = {
+    ...buttonBase,
+    padding: '10px 20px',
+    fontSize: '1rem',
+    minWidth: '140px',
+    backgroundColor: '#2a9d8f',
+    color: '#fff',
+  };
+
+  const tableStyle = {
+    width: '100%',
+    borderCollapse: 'collapse',
+    fontSize: '1rem',
+  };
+
+  const thStyle = {
+    backgroundColor: '#087B5B',
+    color: '#fff',
+    padding: '12px 15px',
+    textAlign: 'left',
+    letterSpacing: '0.05em',
+  };
+
+  const tdStyle = {
+    borderBottom: '1px solid #ddd',
+    padding: '12px 15px',
+    verticalAlign: 'top',
+  };
+
+  const noOrdersStyle = {
+    fontStyle: 'italic',
+    color: '#777',
+    textAlign: 'center',
+    marginTop: '15px',
+  };
+
+
+
+
 
   return (
     <div style={containerStyle}>
-      <h1>Profile Details</h1>
-      <img src={user.imageUrl} alt="Profile" style={imageStyle} />
-      <div>
-        <label>
-          First Name:
-          <input
-            type="text"
-            name="firstname"
-            value={user.firstname}
-            onChange={handleInputChange}
-            disabled={!isEditing}
-          />
-        </label>
-        <label>
-          Last Name:
-          <input
-            type="text"
-            name="lastname"
-            value={user.lastname}
-            onChange={handleInputChange}
-            disabled={!isEditing}
-          />
-        </label>
-        <label>
-          Username:
-          <input
-            type="text"
-            name="username"
-            value={user.username}
-            onChange={handleInputChange}
-            disabled={!isEditing}
-          />
-        </label>
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={user.email}
-            onChange={handleInputChange}
-            disabled={!isEditing}
-          />
-        </label>
+      <h1 style={headingStyle}>Profile Details</h1>
+      <div style={profileTopStyle}>
+        <img src={user.imageUrl} alt="Profile" style={imageStyle} />
+        <div style={infoFieldsStyle}>
+          {['firstname', 'lastname', 'username', 'email'].map((field) => (
+            <label key={field} style={labelStyle}>
+              {field.charAt(0).toUpperCase() + field.slice(1).replace('name', ' Name')}
+              <input
+                type={field === 'email' ? 'email' : 'text'}
+                name={field}
+                value={user[field]}
+                disabled={!isEditing}
+                onChange={handleInputChange}
+                onFocus={() => setFocusedField(field)}
+                onBlur={() => setFocusedField(null)}
+                style={{
+                  ...inputStyle,
+                  ...(focusedField === field ? inputFocusStyle : {}),
+                  backgroundColor: isEditing ? '#fff' : '#f9f9f9',
+                  cursor: isEditing ? 'text' : 'default',
+                }}
+              />
+            </label>
+          ))}
+        </div>
       </div>
 
-      <div>
+      <div style={buttonGroupStyle}>
         {isEditing ? (
-          <button onClick={handleUpdate}>Update</button>
+          <button style={editButtonStyle} onClick={handleUpdate} aria-label="Update profile">
+            Update
+          </button>
         ) : (
-          <button onClick={() => setIsEditing(true)} style={{ margin: '10px' }}>Edit</button>
+          <button
+            style={editButtonStyle}
+            onClick={() => setIsEditing(true)}
+            aria-label="Edit profile"
+          >
+            Edit
+          </button>
         )}
-        <button onClick={handleLogout} style={{ margin: '10px' }}>Logout</button>
-        <button onClick={handleDeleteAccount} style={{ backgroundColor: 'red', color: 'white', margin: '10px' }}>Delete Account</button>
-        <button onClick={() => setShowHistory(!showHistory)} style={{ margin: '10px' }}>
+        <button style={logoutButtonStyle} onClick={handleLogout} aria-label="Logout">
+          Logout
+        </button>
+        <button
+          style={deleteButtonStyle}
+          onClick={handleDeleteAccount}
+          aria-label="Delete account"
+        >
+          Delete Account
+        </button>
+        <button
+          style={historyButtonStyle}
+          onClick={() => setShowHistory(!showHistory)}
+          aria-expanded={showHistory}
+          aria-controls="purchase-history-section"
+        >
           {showHistory ? 'Hide Purchase History' : 'Show Purchase History'}
         </button>
       </div>
 
       {showHistory && (
-        <>
-          <h3>Purchase History</h3>
+        <section id="purchase-history-section" style={purchaseHistoryStyle}>
+          <h2 style={{ color: '#087B5B', marginBottom: '15px' }}>Purchase History</h2>
           <input
             type="text"
             placeholder="Search by item name"
             value={searchTerm}
             onChange={handleSearchChange}
-            style={{ marginBottom: '10px', padding: '5px', width: '100%' }}
+            style={searchInputStyle}
+            aria-label="Search orders by item name"
+            onFocus={() => setFocusedField('search')}
+            onBlur={() => setFocusedField(null)}
           />
-          <button onClick={() => handleSortChange('asc')} style={{ margin: '10px' }}>Sort by Price Ascending</button>
-          <button onClick={() => handleSortChange('desc')} style={{ margin: '10px' }}>Sort by Price Descending</button>
-          
-          <div style={ordersContainerStyle}>
-            {loadingOrders ? (
-              <p>Loading orders...</p>
-            ) : filteredOrders.length === 0 ? (
-              <p>No orders found.</p>
-            ) : (
-              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                <thead>
-                  <tr style={{ backgroundColor: '#f0f0f0' }}>
-                    <th style={{ border: '1px solid #ddd', padding: '8px' }}>Date</th>
-                    <th style={{ border: '1px solid #ddd', padding: '8px' }}>Total Price</th>
-                    <th style={{ border: '1px solid #ddd', padding: '8px' }}>Items</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredOrders.map((order) => (
-                    <tr key={order._id}>
-                      <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-                        {new Date(order.saleDate).toLocaleDateString()}
-                      </td>
-                      <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-                        Rs.{order.productDetails.reduce((sum, item) => sum + item.totalPrice, 0).toFixed(2)}
-                      </td>
-                      <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-                        <ul style={{ margin: 0, padding: 0 }}>
-                          {order.productDetails.map((item) => (
-                            <li key={item.itemName} style={{ listStyleType: 'none' }}>
-                              {item.itemName} (Qty: {item.quantitySold})
-                            </li>
-                          ))}
-                        </ul>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            )}
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '20px' }}>
+            <button
+              style={{ ...sortButtonStyle, backgroundColor: sortOrder === 'asc' ? '#1b5e20' : '#2a9d8f' }}
+              onClick={() => handleSortChange('asc')}
+              aria-pressed={sortOrder === 'asc'}
+            >
+              Sort by Price Ascending
+            </button>
+            <button
+              style={{ ...sortButtonStyle, backgroundColor: sortOrder === 'desc' ? '#b71c1c' : '#2a9d8f' }}
+              onClick={() => handleSortChange('desc')}
+              aria-pressed={sortOrder === 'desc'}
+            >
+              Sort by Price Descending
+            </button>
           </div>
-        </>
+
+          {loadingOrders ? (
+            <p style={{ textAlign: 'center', color: '#087B5B' }}>Loading orders...</p>
+          ) : filteredOrders.length === 0 ? (
+            <p style={noOrdersStyle}>No orders found.</p>
+          ) : (
+            <table style={tableStyle} aria-label="Purchase history table">
+              <thead>
+                <tr>
+                  <th style={thStyle}>Date</th>
+                  <th style={thStyle}>Total Price</th>
+                  <th style={thStyle}>Items</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredOrders.map((order) => (
+                  <tr key={order._id}>
+                    <td style={tdStyle}>
+                      {new Date(order.saleDate).toLocaleDateString()}
+                    </td>
+                    <td style={{ ...tdStyle, color: '#388e3c', fontWeight: '700' }}>
+                      Rs.{order.productDetails.reduce((sum, item) => sum + item.totalPrice, 0).toFixed(2)}
+                    </td>
+                    <td style={tdStyle}>
+                      <ul style={{ margin: 0, padding: 0, listStyleType: 'none' }}>
+                        {order.productDetails.map((item) => (
+                          <li key={item.itemName} style={{ padding: '4px 0' }}>
+                            {item.itemName} (Qty: {item.quantitySold})
+                          </li>
+                        ))}
+                      </ul>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </section>
       )}
 
-      <ToastContainer />
+      <ToastContainer position="top-center" autoClose={2500} theme="colored" />
     </div>
   );
 }

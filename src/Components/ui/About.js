@@ -1,53 +1,92 @@
 import React from 'react';
-import './css/About.css';
-import img1 from "./img/1557-e-commerce-groups-welcome-rush-of-agricultural-products (1).jpg"
-import img2 from "./img/WhatsApp Image 2024-09-21 at 01.51.31_83da0e81.jpg"
-import img3 from "./img/WhatsApp Image 2024-09-21 at 01.51.31_496dcb39.jpg"
-import img4 from "./img/WhatsApp Image 2024-09-21 at 01.51.31_d04bcecf.jpg"
-import img5 from "./img/WhatsApp Image 2024-09-21 at 01.51.32_4fc912c3.jpg"
+import img1 from "./img/1557-e-commerce-groups-welcome-rush-of-agricultural-products (1).jpg";
+import img2 from "./img/WhatsApp Image 2024-09-21 at 01.51.31_83da0e81.jpg";
+import img3 from "./img/WhatsApp Image 2024-09-21 at 01.51.31_496dcb39.jpg";
+import img4 from "./img/WhatsApp Image 2024-09-21 at 01.51.31_d04bcecf.jpg";
+import img5 from "./img/WhatsApp Image 2024-09-21 at 01.51.32_4fc912c3.jpg";
 
 const About = () => {
     return (
-        <div className="about-page">
+        <div style={{ fontFamily: "'Segoe UI', sans-serif", backgroundColor: '#fdfdfd', color: '#222' }}>
             {/* Banner Section */}
-            <section className="header-banner">
-                <h1>About</h1>
+            <section style={{
+                background: 'linear-gradient(to right, #087B5B, #087B5B)',
+                color: 'white',
+                textAlign: 'center',
+                padding: '60px 20px'
+            }}>
+                <h1 style={{ fontSize: '3rem', margin: 0, fontWeight: 'bold' }}>About Us</h1>
             </section>
 
             {/* Content Section */}
-            <section className="content-section">
-                <div className="about-content">
-                    <h2>Get to Know Us</h2>
-                    <h1>The Best Agriculture Market</h1>
-                    <p>
-                    In the world of agriculture, the landscape is ever-evolving, with numerous markets showcasing a rich tapestry of produce. However, many of these markets have undergone significant transformations over time.
-
-The pulse of the industry beats strongly in regions where innovation meets tradition, driving a dynamic exchange of goods. From the rolling fields of grain to vibrant farmer’s markets, the agriculture sector continually adapts to meet the needs of a changing world.
+            <section style={{ display: 'flex', flexWrap: 'wrap', padding: '60px 5%', alignItems: 'center', gap: '40px' }}>
+                <div style={{ flex: '1 1 500px' }}>
+                    <h2 style={{ fontSize: '1.2rem', color: '#16a34a', marginBottom: '10px' }}>Get to Know Us</h2>
+                    <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold', marginBottom: '20px' }}>The Best Agriculture Market</h1>
+                    <p style={{ lineHeight: '1.6', marginBottom: '20px', fontSize: '1.05rem' }}>
+                        In the world of agriculture, the landscape is ever-evolving, with numerous markets showcasing a rich tapestry of produce. However, many of these markets have undergone significant transformations over time.
+                        <br /><br />
+                        The pulse of the industry beats strongly in regions where innovation meets tradition, driving a dynamic exchange of goods. From the rolling fields of grain to vibrant farmer’s markets, the agriculture sector continually adapts to meet the needs of a changing world.
                     </p>
-                    <ul>
-                        <li>Diverse Offerings: A variety of crops and livestock, each contributing to the local economy.</li>
-                        <li>Sustainable Practices: Increasing focus on eco-friendly farming techniques that ensure the longevity of resources.</li>
-                        <li>Market Access: Enhanced distribution channels that connect farmers directly to consumers.</li>
+                    <ul style={{ paddingLeft: '20px', marginBottom: '30px', color: '#555' }}>
+                        <li style={{ marginBottom: '10px' }}>🌾 Diverse Offerings: Variety of crops and livestock.</li>
+                        <li style={{ marginBottom: '10px' }}>🌱 Sustainable Practices: Eco-friendly farming techniques.</li>
+                        <li style={{ marginBottom: '10px' }}>🚚 Market Access: Direct connection between farmers and consumers.</li>
                     </ul>
-                    <button className="discover-btn">Discover More</button>
+                    <button style={{
+                        padding: '12px 24px',
+                        backgroundColor: '#16a34a',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '8px',
+                        fontSize: '1rem',
+                        cursor: 'pointer',
+                        boxShadow: '0 4px 10px rgba(0,0,0,0.15)',
+                        transition: 'background 0.3s ease'
+                    }}
+                        onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#15803d'}
+                        onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#16a34a'}
+                    >
+                        Discover More
+                    </button>
                 </div>
-                <div className="about-image">
-                <img src={img1} a alt="Agriculture Market" />
+                <div style={{ flex: '1 1 400px', textAlign: 'center' }}>
+                    <img src={img1} alt="Agriculture Market" style={{
+                        maxWidth: '100%',
+                        borderRadius: '12px',
+                        boxShadow: '0 8px 20px rgba(0,0,0,0.1)'
+                    }} />
                 </div>
             </section>
 
             {/* Team Members Section */}
-            <section className="team-section">
-                <h2>Meet Our Farmers</h2>
-                <div className="farmers-gallery">
-                    <img src={img2} alt="Farmer 1" />
-                    <img src={img3}  alt="Farmer 2" />
-                    <img src={img4}  alt="Farmer 3" />
-                    <img src={img5}  alt="Farmer 4" />
+            <section style={{ padding: '60px 5%', textAlign: 'center' }}>
+                <h2 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '40px' }}>Meet Our Farmers</h2>
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+                    gap: '20px'
+                }}>
+                    {[img2, img3, img4, img5].map((img, index) => (
+                        <img
+                            key={index}
+                            src={img}
+                            alt={`Farmer ${index + 1}`}
+                            style={{
+                                width: '100%',
+                                height: '200px',
+                                objectFit: 'cover',
+                                borderRadius: '10px',
+                                boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
+                                transition: 'transform 0.3s ease',
+                                cursor: 'pointer'
+                            }}
+                            onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                            onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                        />
+                    ))}
                 </div>
             </section>
-
-           
         </div>
     );
 };

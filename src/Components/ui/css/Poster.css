@@ -1,48 +1,43 @@
-/* Poster Container */
 .poster {
-  width: 100%; /* Full width of the parent container */
-  height: auto; /* Height will adjust according to the image */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px 0; /* Adds some margin around the poster */
-  background-color: #f0f0f0; /* Light gray background for contrast */
-  border-radius: 10px; /* Rounded corners */
-  overflow: hidden; /* Ensures the image doesn't overflow */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+  width: 100vw;
+  height: 60vh;
+  max-height: 700px;
+  position: relative;
+  margin: 50px auto 0 auto;  /* 50px top margin, centered horizontally */
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(8, 123, 91, 0.3);
+  background-color: #e6f0eb;
 }
 
-/* Image Styling */
+
 .poster-img {
-  max-width: 100%; /* Ensures the image doesn't exceed the container width */
-  height: auto; /* Maintains the image's aspect ratio */
-  object-fit: cover; /* Ensures the image covers the entire container without distortion */
-  transition: transform 0.3s ease; /* Smooth zoom effect on hover */
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out, transform 0.5s ease;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
 }
 
-/* Hover effect on larger screens */
-.poster-img:hover {
-  transform: scale(1.05); /* Slight zoom on hover */
+.poster-img.active {
+  opacity: 1;
+  z-index: 2;
+  transform: scale(1.05);
+  transition: opacity 1.2s ease-in-out, transform 0.8s ease;
 }
 
-/* Mobile Responsiveness */
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .poster {
-    margin: 15px 0; /* Reduced margin for smaller screens */
-  }
-
-  .poster-img {
-    object-fit: cover; /* Ensure the image still covers the container */
+    height: 40vh;
   }
 }
 
 @media (max-width: 480px) {
   .poster {
-    margin: 10px 0; /* Further reduced margin for mobile */
-  }
-
-  /* Disable hover effect for mobile devices */
-  .poster-img:hover {
-    transform: none; /* No zoom effect on mobile */
+    height: 30vh;
   }
 }

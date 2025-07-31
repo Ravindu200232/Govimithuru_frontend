@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { FaHome, FaShoppingCart, FaInfoCircle, FaEnvelope, FaUser, FaBars, FaTimes } from 'react-icons/fa'; // Importing icons
+import { FaHome, FaShoppingCart, FaInfoCircle, FaEnvelope, FaUser, FaBars, FaTimes } from 'react-icons/fa';
 import './css/Navbar.css';
 import logo from './img/logo.png';
 
@@ -9,10 +9,9 @@ function Navbar({ cartItemCount }) {
   const username = localStorage.getItem('username');
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-
-  const handleLogin = ()=>{
-    navigate(`/login`)
-  }
+  const handleLogin = () => {
+    navigate(`/login`);
+  };
 
   const handleLogout = () => {
     localStorage.removeItem('user');
@@ -26,63 +25,77 @@ function Navbar({ cartItemCount }) {
 
   return (
     <nav className="navbar">
-      <div className="logo">
-        <img src={logo} alt="Logo" />
-      </div>
+      <div className="navbar-container">
+        <div className="logo">
+          <img src={logo} alt="Logo" />
+          <span className="brand-name">Govimithuru</span>
+        </div>
 
-      {/* Mobile menu icon (Hamburger menu) */}
-      <div className="mobile-menu-icon" onClick={toggleMobileMenu}>
-        {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
-      </div>
+        {/* Mobile menu icon */}
+        <div className="mobile-menu-icon" onClick={toggleMobileMenu}>
+          {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+        </div>
 
-      {/* Nav links container */}
-      <ul className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
-        <li>
-          <NavLink to="/home" className={({ isActive }) => (isActive ? 'active-link' : '')}>
-            <FaHome style={{ marginRight: '5px' }} /> Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/products" className={({ isActive }) => (isActive ? 'active-link' : '')}>
-            <FaShoppingCart style={{ marginRight: '5px' }} /> Products
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/cart" className={({ isActive }) => (isActive ? 'active-link' : '')}>
-            <FaShoppingCart style={{ color: 'red', marginRight: '5px' }} />
-            {cartItemCount > 0 && (
-              <span style={{ color: 'red', fontWeight: 'bold', marginLeft: '5px' }}>
-                {cartItemCount}
-              </span>
-            )}
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/about" className={({ isActive }) => (isActive ? 'active-link' : '')}>
-            <FaInfoCircle style={{ marginRight: '5px' }} /> About
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/contact" className={({ isActive }) => (isActive ? 'active-link' : '')}>
-            <FaEnvelope style={{ marginRight: '5px' }} /> Contact
-          </NavLink>
-        </li>
-        <li>
-          {username && (
-            <NavLink to="/profile" className={({ isActive }) => (isActive ? 'active-link' : '')}>
-              <FaUser style={{ marginRight: '5px' }} /> {username}
+        {/* Nav links container */}
+        <ul className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
+          <li>
+            <NavLink to="/home" className={({ isActive }) => (isActive ? 'active-link' : '')}>
+              <FaHome className="nav-icon" /> 
+              <span>Home</span>
             </NavLink>
+          </li>
+          <li>
+            <NavLink to="/products" className={({ isActive }) => (isActive ? 'active-link' : '')}>
+              <FaShoppingCart className="nav-icon" /> 
+              <span>Products</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/cart" className={({ isActive }) => (isActive ? 'active-link cart-link' : 'cart-link')}>
+              <FaShoppingCart className="nav-icon cart-icon" />
+              <span>Cart</span>
+              {cartItemCount > 0 && (
+                <span className="cart-badge">
+                  {cartItemCount}
+                </span>
+              )}
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/about" className={({ isActive }) => (isActive ? 'active-link' : '')}>
+              <FaInfoCircle className="nav-icon" /> 
+              <span>About</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/contact" className={({ isActive }) => (isActive ? 'active-link' : '')}>
+              <FaEnvelope className="nav-icon" /> 
+              <span>Contact</span>
+            </NavLink>
+          </li>
+          {username && (
+            <li>
+              <NavLink to="/profile" className={({ isActive }) => (isActive ? 'active-link profile-link' : 'profile-link')}>
+                <FaUser className="nav-icon" /> 
+                <span>{username}</span>
+              </NavLink>
+            </li>
           )}
-        </li>
-        
-        <li>
-          {localStorage.getItem("email")!= null && <button onClick={handleLogout} style={{ cursor: 'pointer' }}>Logout</button>}
-        </li>
-
-        <li>
-          {localStorage.getItem("email")== null && <button onClick={handleLogin} style={{ cursor: 'pointer' }}>Login</button>}
-        </li>
-      </ul>
+          
+          <li className="auth-buttons">
+            {localStorage.getItem("email") != null && 
+              <button onClick={handleLogout} className="logout-btn">
+                Logout
+              </button>
+            }
+            {localStorage.getItem("email") == null && 
+              <button onClick={handleLogin} className="login-btn">
+                Login
+              </button>
+            }
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 }
